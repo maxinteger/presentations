@@ -54,7 +54,7 @@
 				</section>
 
 				<section data-background="assets/blender.png" data-background-size="1000px">
-					<h2><a href="http://www.evolutionoftheweb.com" target="_blank">Webtörténelem tömören</a></h2>
+					<h2><a href="http://www.evolutionoftheweb.com" target="_blank">Honnan jön a web?</a></h2>
 				</section>
 
 
@@ -132,7 +132,7 @@
 							<li class="fragment">Méret skálzás <small>(media query, felbontás független me.)</small></li>
 							<li class="fragment">Animációk <small>(keyframe, transition)</small></li>
 							<li class="fragment">Betűkészletek kezelése <small>(@font)</small></li>
-							<li class="fragment">komplex árnyékok és filterek <small>(box-shadow, -webkit-filter, ...)</small></li>
+							<li class="fragment">Összetett árnyékok és filterek <small>(box-shadow, -webkit-filter, ...)</small></li>
 						</ul>
 					</section>
 					<section data-background="assets/js-logo.png"  data-background-size="500px">
@@ -149,12 +149,13 @@
 
 
 				<section data-background="assets/nativevsweb.png" data-background-size="1000px">
-					<h2>Natív VS Webes alkalmazás <br> <small>Nem csak mobilra</small></h2>
+					<h2>Natív vagy Webes alkalmazás?</h2>
 
 					<p>Attól függ mi a cél!</p>
+					<hr>
 
 					<div style="float:left; width:47%;" class="fragment">
-							<small class="fragment highlight-green">
+							<small class="fragment">
 								<ul>
 									<li>Nagyon gyors(?) futás</li>
 									<li>Elérhetőek az OS szintű API-k</li>
@@ -167,7 +168,7 @@
 							</small>
 						</div>
 						<div style="float:right; width:47%;" class="fragment">
-							<small class="fragment highlight-red">
+							<small class="fragment">
 								<ul>
 									<li>Gyors futás</li>
 									<li>Gyors fejlesztés</li>
@@ -180,7 +181,6 @@
 							</small>
 						</div>
 				</section>
-
 
 				<section data-background="assets/html-logo.png" data-background-size="500px">
 					<section>
@@ -203,7 +203,7 @@
 							<li class="fragment">html + CSS</li>
 							<li class="fragment">Űrlap elemek <small>(email, number, range, date,...)</small></li>
 							<li class="fragment">Animációk</li>
-							<li class="fragment"><a href="http://www.teslamotors.com/goelectric#" title="">Példa</a></li>
+							<!--<li class="fragment"><a href="http://www.teslamotors.com/goelectric#" title="">Példa</a></li>-->
 						</ul>
 					</section>
 
@@ -216,16 +216,6 @@
 
 							<li class="fragment">audio</li>
 							<li class="fragment">Web audio API - <a href="http://keithwhor.com/music/"  target="_blank" title="">Music</a></li>
-						</ul>
-					</section>
-
-					<section>
-						<h2>Kommunikáció</h2>
-						<ul>
-							<li class="fragment">HTTP</li>
-							<li class="fragment">AJAX</li>
-							<li class="fragment">WebSocket</li>
-							<li class="fragment">WebRTC</li>
 						</ul>
 					</section>
 
@@ -286,7 +276,7 @@
 									<li>Nehézkes SEO</li>
 									<li>Az alkalmazás indulás lassú lehet</li>
 									<li>Modern böngésző szükséges <small>IE9+</small></li>
-									<li>Komplex kliens oldali kód</li>
+									<li>Összetett kliens oldali kód</li>
 								</ul>
 							</small>
 						</div>
@@ -342,7 +332,14 @@
 								<a href="http://www.jetbrains.com/webstorm/" title="WebStorm">WebStorm</a>,
 								<a href="http://www.microsoft.com/visualstudio/eng/visual-studio-2013" title="Visual Studio">Visual Studio</a>
 							</small></li>
-							<li>Verziókezelő <small>Git, Subversion</small></li>
+							<li>Verziókezelő <small>Git (<a href="https://github.com/" title="GitHub">GitHub</a>), Subversion</small></li>
+							<li>Tárhelyek:
+								<small>
+									<a href="https://www.heroku.com/" title="Heroku">Heroku</a>,
+									<a href="https://www.openshift.com/" title="OpenShift">OpenShift</a>
+									...
+								</small>
+							</li>
 						</ul>
 					</section>
 					<section>
@@ -380,16 +377,36 @@
 					</section>
 					<section>
 						<h2>Tesztelés</h2>
+						<p>Nagyon fontos!</p>
+						<hr>
+						<ul>
+							<li>
+								Scope
+								<ul>
+									<li>Unit test <small>back-end, front-end külön</small></li>
+									<li>End-to-End test <small>integrációs teszt</small></li>
+								</ul>
+							</li>
+							<li>
+								Front-end eszközök
+								<ul>
+									<li>Tesz futtató környezet <small><a href="http://karma-runner.github.io/0.10/index.html" title="Karma Test Runner">Karma Test Runner</a></small></li>
+									<li>BDD tesz keretrendszer <small><a href="http://pivotal.github.io/jasmine/" title="Jasmine">Jasmine</a></small></li>
+									<li>End-to-End teszt <small><a href="http://www.seleniumhq.org/" title="Selenium">Selenium</a></small> </li>
+								</ul>
+							</li>
+						</ul>
 					</section>
 
 				</section>
 
-				<section>
+				<section data-background="assets/bttf.png" data-background-size="500px">
 					<h1>Merre tart a web?</h1>
 					<ul>
-						<li>Gyorsuló szabványosítás - implementálás</li>
-						<li>Modularizált CSS, HTML</li>
-						<li>EcmaScript 6.0 </li>
+						<li class="fragment">Gyorsuló szabványosítás - implementálás</li>
+						<li class="fragment">Modularizált CSS, HTML</li>
+						<li class="fragment">EcmaScript 6.0 </li>
+						<li class="fragment">Mobileszközökön való elterjedés</li>
 					</ul>
 				</section>
 
