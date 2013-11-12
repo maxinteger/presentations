@@ -1,0 +1,375 @@
+<!doctype html>
+<html lang="hu">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Alkalmazásfejlesztés a weben</title>
+
+		<meta name="description" content="Alkalmazásfejlesztés a weben">
+		<meta name="author" content="Vadász László">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.min.css">
+		<link rel="stylesheet" href="css/theme/default.css" id="theme">
+		<link rel="stylesheet" href="css/main.css">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="/css/highlight/zenburn.css">
+
+		<!--[if lt IE 9]>
+		<script src="lib/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h1>Alkalmazásfejlesztés a weben</h1>
+					<p>
+						<small>Előadó <a href="">Vadász László</a></small>
+					</p>
+				</section>
+
+				<section>
+					<h2></h2>
+					<ol>
+						<li>Honnan jön a web?</li>
+						<li>Hogyan épül fel egy webkiszolgáló?</li>
+						<li>Mi az, hogy kliensoldal?</li>
+						<li>Natív vagy Webes alkalmazás?</li>
+						<li>Mitől lesz alkalmazás egy weboldal?</li>
+						<li>Mi az az SPA?</li>
+						<li>Hogyan kezdjük?</li>
+						<li>Merre tart a web?</li>
+					</ol>
+				</section>
+
+				<section data-background="assets/blender.png" data-background-size="1000px">
+					<h2><a href="http://www.evolutionoftheweb.com" target="_blank">Webtörténelem tömören</a></h2>
+				</section>
+
+
+
+
+				<!-- Example of nested vertical slides -->
+				<section>
+					<section data-background="assets/how-things-work.png" data-background-size="1000px">
+						<h2>Hogyan épül fel egy webkiszolgáló?</h2>
+					</section>
+					<section>
+						<h3>Szereplők</h3>
+						<img src="assets/web-page-base-flow.svg" alt="Base flow">
+					</section>
+					<section>
+						<h3>Kommunikációs csatornák</h3>
+						<img src="assets/the-path-to-webrtc.jpg" alt="WebRTC">
+					</section>
+				</section>
+
+				<section>
+					<section data-background="assets/browsers.png" data-background-size="1000px">
+						<h2>Mi az, hogy kliensoldal?</h2>
+					</section>
+					<section data-background="assets/browsers.png" data-background-size="1000px">
+						<h3>Futtaó környzete - Böngésző</h3>
+						<p>
+							Egységes OS független platform.
+						</p>
+
+						<br>
+
+						<div style="float:left; width:47%;" class="fragment">
+							<b> Határtalan lehetőségek </b>
+							<small class="fragment highlight-green">
+								<ul>
+									<li>Egységes fejlesztői platform</li>
+									<li>Csak egy nyelven programozható</li>
+									<li>Egységes és bővülő API</li>
+									<li>Gyorsan elsajátítható</li>
+									<li>Jól átgondolt leírónyelvek</li>
+								</ul>
+							</small>
+						</div>
+						<div style="float:right; width:47%;" class="fragment">
+							<b> Kötöttségek </b>
+							<small class="fragment highlight-red">
+								<ul>
+									<li>Rengeteg biztonsági megkötés</li>
+									<li>Elérhetetelen OS szolgáltaltások</li>
+									<li>Csak egy nyelven programozható</li>
+									<li>Kompatibilitási problémák</li>
+								</ul>
+							</small>
+						</div>
+					</section>
+					<section data-background="assets/html-logo.png"  data-background-size="500px">
+						<h3>HTML</h3>
+						<p>
+							A weboldalka struktúráját leíró nyelv
+						</p>
+						<ul>
+							<li class="fragment">Strukturális leírás a felhasználónak...</li>
+							<li class="fragment">... és a gépi értelmezés számára (böngésző, robot, ...)</li>
+						</ul>
+					</section>
+					<section data-background="assets/css-logo.png"  data-background-size="500px">
+						<h3>CSS</h3>
+						<p>
+							A weboldal megjelenését és formzását leíró nyelv
+						</p>
+						<ul>
+							<li class="fragment">Alapvető formzás <small>(font, color, ...)</small></li>
+							<li class="fragment">Layout <small>(position, float, ...)</small></li>
+							<li class="fragment">Méret skálzás <small>(media query, felbontás független me.)</small></li>
+							<li class="fragment">Animációk <small>(keyframe, transition)</small></li>
+							<li class="fragment">Betűkészletek kezelése <small>(@font)</small></li>
+							<li class="fragment">komplex árnyékok és filterek <small>(box-shadow, -webkit-filter, ...)</small></li>
+						</ul>
+					</section>
+					<section data-background="assets/js-logo.png"  data-background-size="500px">
+						<h3>JavaScript</h3>
+						<ul>
+							<li class="fragment">Scriptnyelv</li>
+							<li class="fragment">Szintaxisa a Java-ra hasonlít</li>
+							<li class="fragment">Dinamikus</li>
+							<li class="fragment">Több paradigmát is támoagat (OOP, Funkcionális, ...)</li>
+							<li class="fragment">Prototype alapú leszármaztatás</li>
+						</ul>
+					</section>
+				</section>
+
+
+				<section data-background="assets/nativevsweb.png" data-background-size="1000px">
+					<h2>Natív VS Webes alkalmazás <br> <small>Nem csak mobilra</small></h2>
+
+					<p>Attól függ mi a cél!</p>
+
+					<div style="float:left; width:47%;" class="fragment">
+							<small class="fragment highlight-green">
+								<ul>
+									<li>Nagyon gyors(?) futás</li>
+									<li>Elérhetők az OS szintű API-k</li>
+									<li>Optimálisabban kihasználható HW</li>
+									<li>App store</li>
+									<li>Offline jobban használható</li>
+									<li>Gazdag UI komponens készlet</li>
+									<li>Telepíteni kell</li>
+								</ul>
+							</small>
+						</div>
+						<div style="float:right; width:47%;" class="fragment">
+							<small class="fragment highlight-red">
+								<ul>
+									<li>Gyors futás</li>
+									<li>Gyors fejlesztés</li>
+									<li>Könnyen frissíthető</li>
+									<li>SEO szempontból jobb</li>
+									<li>Platform független</li>
+									<li>Felbontástúl független UI</li>
+									<li>Böngésző kell</li>
+								</ul>
+							</small>
+						</div>
+				</section>
+
+
+				<section data-background="assets/html-logo.png" data-background-size="500px">
+					<section>
+						<h1>Mitől lesz alkalmazás egy weboldal?</h1>
+					</section>
+
+					<section >
+						<h2>Mi az a HTML5</h2>
+
+						<ul>
+							<li class="fragment">Gyűjtő fogalom a modern web-re</li>
+							<li class="fragment">HTML5 + CSS3 + új JavaScript API-k</li>
+							<li class="fragment"> = Web alklamzás</li>
+						</ul>
+					</section>
+
+					<section >
+						<h2>Megjelenítés</h2>
+						<ul>
+							<li class="fragment">html + CSS</li>
+							<li class="fragment">Űrlap elemek <small>(email, number, renge, date,...)</small></li>
+							<li class="fragment">Animációk</li>
+							<li class="fragment"><a href="http://www.teslamotors.com/goelectric#" title="">Példa</a></li>
+						</ul>
+					</section>
+
+					<section>
+						<h2>Múltimédia</h2>
+						<ul>
+							<li class="fragment">2D: Canvas / SVG / MathML</li>
+							<li class="fragment">3D WebGL - <a href="http://madebyevan.com/webgl-water/"  target="_blank" title="">Webgl water</a></li>
+							<li class="fragment">video</li>
+
+							<li class="fragment">audio</li>
+							<li class="fragment">Web audio API - <a href="http://keithwhor.com/music/"  target="_blank" title="">Music</a></li>
+						</ul>
+					</section>
+
+					<section>
+						<h2>Kommunikáció</h2>
+						<ul>
+							<li class="fragment">HTTP</li>
+							<li class="fragment">AJAX</li>
+							<li class="fragment">WebSocket</li>
+							<li class="fragment">WebRTC</li>
+						</ul>
+					</section>
+
+					<section>
+						<h2>Offline használat</h2>
+						<ul>
+							<li class="fragment">Lokális adattárolás <small>(Local/Session Storage, IndexedDB)</small></li>
+							<li class="fragment">Application cache</li>
+							<li class="fragment">Session history</li>
+							<li class="fragment">File API</li>
+						</ul>
+					</section>
+
+					<section>
+						<h2>Mobil</h2>
+						<ul>
+							<li class="fragment">Akkumlátor töltöttség</li>
+							<li class="fragment">GPS</li>
+							<li class="fragment">Szenzorok <small>(Gyorsulásmérő, távolság érzékelő, ...)</small></li>
+							<li class="fragment">Kamera</li>
+						</ul>
+					</section>
+
+					<section>
+						<h2>Továbbá</h2>
+						<ul>
+							<li class="fragment">Web worker <small>többszálú adatfeldolgozás</small></li>
+							<li class="fragment">Biztonság <small>Same origin testreszabás</small></li>
+						</ul>
+					</section>
+				</section>
+
+				<section data-background="assets/spa-logo.png" data-background-size="500px">
+					<section>
+						<h1>Mi az az SPA?</h1>
+					</section>
+					<section>
+						<h2>SPA - Single Page Application</h2>
+						<img src="assets/spa.png" alt="">
+					</section>
+					<section>
+						<h2>Pro és Contra</h2>
+						<div style="float:left; width:47%;" class="fragment">
+							<small class="fragment highlight-green">
+								<ul>
+									<li>Külön válik a server és a fronted</li>
+									<li>Szerver terhelés csökken</li>
+									<li>Miniális adatáramlás</li>
+									<li>Újrahasznosítható szerver API</li>
+									<li>Felhasználó élmány növelhető</li>
+									<li>Komplex alkalmazások építhetők</li>
+								</ul>
+							</small>
+						</div>
+						<div style="float:right; width:47%;" class="fragment">
+							<small  class="fragment highlight-red">
+								<ul>
+									<li>Nehézkes SEO</li>
+									<li>Az alaklmazás indulás lassú lehet</li>
+									<li>Modern böngésző szükséges <small>IE9+</small></li>
+									<li>Komplex kliensoldali kód</li>
+								</ul>
+							</small>
+						</div>
+					</section>
+					<section>
+						<h2>SPA ketrendszerek</h2>
+						<ul>
+							<li><a href="http://backbonejs.org/" title="Backbone">Backbone</a></li>
+							<li><a href="http://angularjs.org/" title="AngularJS">AngularJS</a></li>
+							<li><a href="http://emberjs.com/" title="AngularJS">EmberJS</a></li>
+						</ul>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h1>Hogyan kezdjük?</h1>
+					</section>
+					<section>
+						<h2>Tanulás</h2>
+					</section>
+					<section>
+						<h2>Programozás</h2>
+					</section>
+					<section>
+						<h2>Tesztelés</h2>
+					</section>
+					<section>
+						<h2>Verziókezelés</h2>
+					</section>
+				</section>
+
+				<section>
+					<h1>Merre tart a web?</h1>
+					<ul>
+						<li>Gyorsuló szabványosítás - implemntálás</li>
+						<li>Modularizált CSS, HTML</li>
+						<li>EcmaScript 6.0 </li>
+					</ul>
+				</section>
+
+
+				<section>
+					<h1>Köszönöm a figyelmet</h1>
+					<h3>Kérdések?</h3>
+					<img src="assets/philosoraptor.png" alt="">
+				</section>
+
+			</div>
+
+		</div>
+
+		<script src="/lib/head.min.js"></script>
+		<script src="/lib/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Parallax scrolling
+				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+				// parallaxBackgroundSize: '2100px 900px',
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					//{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+	</body>
+</html>

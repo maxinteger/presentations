@@ -1,0 +1,157 @@
+Előadás
+
+- rövide történelem:
+ * static oldalak - HTML
+ * cgi - generált HTML oldalak
+ * php és társai
+ * interaktív oldalak -
+ * AJAX
+ * SPA - Simple Page Application
+
+- hogyan épül fel egy dinamikus weboldal
+
+- hogyan épül fel egy SPA
+
+- html5 lehetőségei:
+	*
+
+- Mit használjunk
+ * adatbázis
+ 	relációs adatábzis (sqlite, mysql, postgres)
+ 	nosql adatbázis (mongodb)
+ * backend
+
+ * fronend
+ * fejelsztéshez
+ 	- OS: Unix
+ 	- Szerkesztő: sublimetext
+ 	- verzió kezelés: git (svn)
+ 	-
+
+- linkek:
+	- http://github.com/
+	- http://devdocs.io/
+
+I
+egy kis történelem:
+	http://www.evolutionoftheweb.com/#/evolution/day
+ - HTTP
+ 	HyperText Transefer Protocol - Alkalmazás rétegbeli protokol, request/response modelre épül és teljesen állapot mentes
+ - HTML
+ 	HyperText Markup Languag - Weboldalak struktúrális leírására szolgáló nyelv
+ - Cookies
+ 	Kismennyiségű adat amit mindig utazik a szerve és a kilens között, első sorban a falhasználó azanosítására használjuk
+ - JavaScript
+ 	A világ legjobb programozási nyelve :D - a weboldal interaktivitásáért felel
+ - CSS
+ 	Cascading Style Sheets - a weboldal megjelenítésért és formázásáért felelős leíró nyelv
+ - Applet, Flash
+ 	Komplex alkalmazás/animáció a weben ... lassan már csak múlt
+
+ - AJAX
+ 	Asyncron Javascript And Xml - Valójában ez egy Javascript objektum XMLHttpRequest amivel asszinkron HTTP kéréseket indíthatunk a szerver felé
+
+ *) Az alapok után vessünk egy pillantást arra, hogy hogyan is épül fel egy web oldal infrastuktúrája
+
+II - Web oldalak működése
+ 1) "Dinamikus" weboldalak
+ 	- A legleső weboldalak is hasonló módon épltek fel kivéve, hogy nem vold adatbázis és a szerver is csak egyszerű HTTP fájl kiszolgáló volt ami a megfelelő URL-re ahozzá tartozó HTML küldte vissza
+ 	- A mai weboldalk zöme is ezt a felépítést követi (Drupal, Wordpress, ...)
+ 	- Szerver oldalon komoly üzelti logika van (validáció, HTML oldal generálás) ami az adatbázisból dolgozi és oda ismenti az adatait
+ 	- a kliensoldali logika nagyon minimális, áltaában csak kényelmi funkciókat lát el
+ 	előnyök:
+ 		- visszonylag könnyű kivitelezni
+ 	hátrányok:
+ 		- minden problémát a szerver oldalon kell megoldani
+ 		- az oldal betöltések miatt "döcögős" az oldal (pl webshopok, minden kosárba rakás után reload)
+
+ 2) "Dinamikus" weboldalak egy csipetnyi AJAX-al
+ 	- Alapvetően minden maradt a régi
+ 	- kivéve, hogy adott egy eszköz amivel az oldal újratöltése nélkül is kommunikálhatunk a szerverrel
+ 	- mire szokás használni:
+ 		* oldal részletek folyamatos frissítése
+ 		* mentés előtti validáció
+ 		* keresés
+ 	előnyök:
+ 		- javuló felhasználói élmény
+ 	hátrányok:
+ 		- a szerver oldalalt bonyolíthatja,
+ 		- nem lehet igazi alkalamzást készítani
+
+ 3) SPA - Single Page Application
+ 	- A szerver csak és kizárólag egy (gyakran "üres") index oldalt szolgál ki (+ a static tatalmakat)
+ 	- A szerver falszabadul a oldal generálás és az odalak közötti kapcsolat (route) kezelésének terhe alól
+ 		így elég csak az adatokat kezelésével törődni
+ 	előnyök:
+ 		- mindenki a maga dolgával törődik
+ 		- általánosan felhasználható szervre oldal készülhet
+ 		- gördülékenyebb és kényelmesebb oldalak/alkalmazások készíthetők
+ 	hátrány:
+ 		- komplexebb kliensoldal
+ 		- az optimális működéshez "modern" böngészőre van szükség
+
+ *)
+ Egyértelműen látszik, hogy egyre nagyobb hangsúlyt kap a kliensoldal programozása, tehát meg is érketünk a fő témánkhoz :)
+
+III - Frontend
+  A kliens oldaon vagy másnéven a front-end -en, tehát a felhasználó böngészőjében a következő eszközök állnak a rendelkezésünkre:
+
+  1) Böngésző
+  	A böngésző számunkra, fejlesztőknek  egy egységes(?) OS független(?) platform.
+
+  	Egy nagyon kötött platform
+  	 - rengeteg biztonsági megkötés
+  	 - elérhetetelen OS szolgáltaltások (fájlrendszer elérés) (?)
+  	 - elérhetetlenek az API-k alacsonyszitű fukciói
+  	 - csak egy nyelven programozható: JS
+
+  	A határtalan lehetőségek paltformja
+  	 - egységes fejlesztői platform szinte minden létező rendszerre (PC, mobil, TV, mikrosütő,...)
+  	 - csak egy nyelven programozható: JS
+  	 - folyamatosan bővülő és egységes API szinte mindenre (szöveg, audio, video, 3D, ...)
+   	 - a magasszintű API-k miatt gyorsan elsajátítható
+   	 - jól átgondolt leírónyelvek alkalamzása (HTML, CSS)
+
+
+  2) HTML 5
+  	A weboldal felépítését leíró nyelv.
+  	Valójában alig változott a 4-es verzióhoz képest
+  	Mégis ez alatt a név alatt fut mind az ami a HTML, CSS és JS-ben végbement nagyobb áltozás
+
+  	A <font> és társai még a CSS előtről maradtak ránk, ne használjuk
+
+  3) CSS3
+  	A weboldal megjelenését és formzását leíró nyelv
+  	Folyamatosan bővül
+  	 - méret skálzás
+  	 - animációk
+  	 - könyv formázás
+  	 - fontok kezelése
+  	 - komplex árnyékok és filterek
+
+  4) Javascript
+  	Dinaikus programozási nyelv
+
+
+IV - Alkalmazások a bönsgészőben
+	Jó, jó ez mind szép, de még is mit tudunk kezdeni ezzel a 3-assal
+
+	Mégis mia a csudáért fejlesztenék alkalmazást pont a webre
+
+
+V - Mit használjunk fejelsztéshez?
+	Azért szeretnék kitérni erre is nagyon röviden, mert úgyvélem, hogy sokat jelent ha a megfelelő
+	eszközzel fogunk neki a tanulásnak/munkának.
+	Sajnos igen gyorsan kedvünk tudja szegni egy rosszul választott program
+
+	1) OS
+		Mindeki használja azt ami számára megfelelő (én a Unix rendszereket preferálom)
+
+	2) Verzió kezelés
+		Nagyon fontos, főleg a közös munkához, de a visszakövethetőség miatt a egyszemélyes projektekben is ajánlott
+		Tapasztalataim szerint az új projekteknél a Git toronymagasan vezet, mindenképpen ajánlott megismerkedni vele
+		Komolyabb kis porjektetknél is érdemes használni (Gtihub, Butbucket)
+
+	3) Kódszerkesztő / IDE
+		Kisebb projektekhez: SublimeText, Notepad++
+		Nagyobb projektekhez: Ingyenes: Eclipse, Netbeans, ... Fizetős: JetBrains termékek
