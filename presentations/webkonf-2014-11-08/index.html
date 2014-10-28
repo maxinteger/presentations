@@ -1,0 +1,570 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Vidzor - Interaktív &lt;video&gt;</title>
+
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Hakim El Hattab">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.min.css">
+		<link rel="stylesheet" href="css/vidzor.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+		<script>
+			if( window.location.search.match( /print-pdf/gi ) ) {
+				var link = document.createElement( 'link' );
+				link.rel = 'stylesheet';
+				link.type = 'text/css';
+				link.href = 'css/print/pdf.css';
+				document.getElementsByTagName( 'head' )[0].appendChild( link );
+			}
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body class="dark">
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<img class="logo" src="assets/p-dark-logo2.png" width="100" style="margin-bottom: 100px">
+
+					<h1>Interaktív <code>&lt;video&gt;</code></h1>
+
+					<p>
+						<small><a href="">Ötvös Richárd</a> / <a href="">Vadász László</a></small>
+					</p>
+
+				</section>
+
+<!-- DEMO -->
+				<section>
+					<h2>Demo</h2>
+					<iframe src="http://vidzor.com/media/projects/Qww8j8UsfW_.html?embed=true&t=1412775415811"
+							name="vidzor"
+							frameborder="0"
+							mozallowfullscreen=""
+							webkitallowfullscreen=""
+							allowfullscreen=""
+							style="width: 640px; height:480px;">
+							<a href="http://vidzor.com">Vidzor - Interactive Videos</a>
+					</iframe>
+				</section>
+
+<!-- VIDEO 101 -->
+				<section>
+					<section>
+						<h2>&lt;video&gt; 101</h2>
+						<pre><code data-trim class="html">
+&lt;video src="video.mp4" width="320" height="200" controls muted&gt;
+   Sorry, your browser doesn't support embedded videos,
+&lt;/video&gt;
+					</code></pre>
+					</section>
+
+
+					<section>
+						<h2>&lt;video&gt; 202</h2>
+						<pre><code data-trim class="html">
+&lt;video preload="none|metadata|auto" poster="url"&gt;
+   &lt;source src="/video.webm" type="video/webm; codecs='vp8, vorbis'"/&gt;
+   &lt;source src="/video.mp4" type="video/mp4; codecs='avc1.42C028, mp4a.40.2'"/&gt;
+   ...
+&lt;/video&gt;
+					</code></pre>
+					</section>
+
+					<section>
+						<h2>Media Fragments URI</h2>
+						<pre><code data-trim  class="html">
+&lt;video &gt;
+   &lt;source src="/video.webm#t=10" type="video/webm"/&gt;
+   ...
+&lt;/video&gt;
+
+&lt;!-- Ahol #t=[start_time][,end_time] --&gt;
+					</code></pre>
+
+					<div class="fragment">
+						<h3>Szerver oldal:</h3>
+						<code>Accept Ranges: bytes</code> Header támogatása
+					</div>
+					</section>
+
+
+					<section>
+						<h2 style="margin-bottom: .1em">API</h2>
+						<pre><code data-trim class="javascript">
+var video = document.querySelector('video');
+
+video.duration       // s
+video.currentTime    // s
+video.buffered       // TimeRange - start(idx), end(idx), length
+video.play([time])
+video.pause()
+video.paused
+video.volume         // [0-1]
+video.muted
+
+video.load()
+
+							</code></pre>
+					</section>
+
+					<section>
+						<h2 style="margin-bottom: .1em">Finomságok</h2>
+						<pre><code data-trim class="javascript">
+var video = document.querySelector('video'),
+	w = video.videoWidth,
+	h = video.videoHeight;
+
+// Teljes képernyős mód
+document.body.[moz|webkit|ms]RequestFullScreen()
+
+// Képlopás a videóból
+document.querySelector('canvas')
+   .getContext('2d')
+   .drawImage(video, 0, 0, w, h);
+							</code></pre>
+					</section>
+
+					<section>
+						<h2 style="margin-bottom: .1em">Events</h2>
+						<a class="test" href="http://www.w3.org/2010/05/video/mediaevents.html">
+							<img width="800" src="assets/media-events.png" alt="Media events">
+						</a>
+					</section>
+				</section>
+
+
+<!-- Problémák -->
+				<section>
+					<h1>A valóság</h1>
+
+					<ul>
+						<li>Videó események</li>
+						<li>Letöltés / Bufferelés</li>
+						<li>Időzítés</li>
+					</ul>
+				</section>
+
+
+<!-- Problémák -->
+				<section>
+					<h1>Mobil </h1>
+
+					<ul>
+						<li>IOS</li>
+						<li>Android</li>
+						<li>WindowsPhone</li>
+					</ul>
+				</section>
+
+<!-- Future -->
+				<section>
+					<h1>A jövő</h1>
+
+					<ul>
+						<li>&lt;track&gt;</li>
+						<li>Media API-k</li>
+						<li>EME</li>
+					</ul>
+				</section>
+
+				<section>
+					<section>
+
+						<h2>&lt;track&gt;</h2>
+						<p>
+							A hang és kép adatt mellett elhelyezhető információs sáv(ok)
+						</p>
+					</section>
+
+					<section>
+						<h2>Mire jó?</h2>
+
+						<ul>
+							<li class="fragment">Felirat</li>
+							<li class="fragment">Fejezetek megjelölése</li>
+							<li class="fragment">Keresési információk</li>
+							<li class="fragment">Metaadatok</li>
+							<li class="fragment"><code>&lt;audio&gt;</code> TAG-ban is használható</li>
+						</ul>
+					</section>
+
+					<section>
+						<h2>DOM</h2>
+
+						<pre><code data-trim class="html">
+&lt;video&gt;
+   &lt;source ...&gt;
+   &lt;track kind="subtitle" src="subtitle-en.srt" srclang="en" default&gt;
+   &lt;track kind="subtitle" src="subtitle-hu.srt" srclang="hu"&gt;
+   &lt;track kind="captions" src="..."&gt;
+   &lt;track kind="descriptions" src="..."&gt;
+   &lt;track kind="chapters" src="..."&gt;
+   &lt;track kind="metadata" src="meta.vtt" label="Location informations"&gt;
+&lt;/video&gt;
+						</code></pre>
+					</section>
+
+
+					<section>
+						<h2>WebVTT fájl</h2>
+
+						<p class="fragment">WebVTT azaz Web Video Text Track</p>
+						<p class="fragment">Kiterjesztés <code>.vtt</code> - <code>text/vtt</code> </p>
+						<p class="fragment">Időzített információkat tartalmaz (cue)</p>
+						<p class="fragment">A formátum naygrészt megegyezik a SubRip-el (srt)</p>
+
+					</section>
+					<section>
+						<h2>WebVTT 1 - időzítés</h2>
+
+						<pre><div class="code">WEBVTT
+
+1
+00:00:22.230 --> 00:00:24.606
+Első felirat (cue)
+</div></pre>
+					</section>
+					<section>
+						<h2>WebVTT 2 - pozícionálás</h2>
+
+						<pre><div class="code">WEBVTT
+2
+00:00:34.159 --> 00:00:35.743 line:63% position:72% align:start
+Harmadik pozícionálva
+</div></pre>
+					</section>
+					<section>
+						<h2>WebVTT 3 - formázás</h2>
+
+						<pre><div class="code">WEBVTT
+3
+00:00:40.500 --> 00:00:41.500
+&lt;p&gt;
+   &lt;c.classname&gt;Negydik&lt;/c&gt; formázva &lt;i&gt;dőlt&lt;/i&gt; &lt;b&gt;félkövér&lt;/b&gt;
+&lt;/p&gt;
+
+</div></pre>
+					</section>
+					<section>
+						<h2>WebVTT 4 - adat</h2>
+
+						<pre><div class="code">WEBVTT
+4
+00:00:60.500 --> 00:00:71.500
+{
+   "name": "Budapest"
+   "latitude": 47.497912
+   "longitude": 19.040235
+}</div></pre>
+					</section>
+
+					<section>
+						<h2>Track - API</h2>
+
+						<pre><code data-trim class="javascript">
+var videoElement = document.querySelector("video"),
+    textTracks = videoElement.textTracks,
+    textTrack = textTracks[0],
+    cues = textTrack.cues,
+    cue = cues[0],
+    cueId = cue.id,
+    cueText = cue.text,
+    data = JSON.parse(cueText);
+
+textTrack.oncuechange = function(){}
+						</code></pre>
+					</section>
+					<section>
+						<h2>Track - API 2</h2>
+
+						<pre><code data-trim class="javascript">
+var videoElement = document.querySelector("video"),
+    textTracks = videoElement.textTracks,
+    textTrack = textTracks[0],
+    cues = textTrack.cues,
+    cue = cues[0],
+    cueId = cue.id,
+    cueText = cue.text,
+    data = JSON.parse(cueText);
+
+textTrack.oncuechange = function(){}
+						</code></pre>
+					</section>
+
+
+					<section>
+						<h2>Támogatottság</h2>
+						<ul>
+							<li>Chrome <strong>23</strong></li>
+							<li>Firefox <strong>31</strong></li>
+							<li>Internet Explorer <strong>10</strong></li>
+							<li>Safari <strong>6</strong></li>
+						</ul>
+					</section>
+				</section>
+
+
+				<section>
+					<section>
+						<h2>Media API-k</h2>
+						<p>API-k a videó (és audió) forrás manipulálásához</p>
+					</section>
+
+
+					<section>
+						<h2>Mire jó?</h2>
+						<ul>
+							<li class="framgnet">Hangsáv váltás lejátszás közben</li>
+							<li class="fragment">Bufferelés optimalizálása</li>
+							<li class="fragment">Gyors váltás videók között</li>
+							<li class="fragment">Videó részeletek korlátozás (pl. login)</li>
+							<li class="fragment">Valódi videó stream</li>
+						</ul>
+					</section>
+
+					<section>
+						<h2>MediaSource</h2>
+						<p>Kép és hang adatforrások kezelése</p>
+					</section>
+
+					<section>
+						<h2>MediaSource - példa</h2>
+						<pre><code data-trim class="javascript">
+var codec = 'video/webm; codecs="vorbis,vp8"',
+    video = document.querySelector('video'),
+    mediaSource = new MediaSource();
+
+video.src = window.URL.createObjectURL(mediaSource);
+
+mediaSource.addEventListener('sourceopen', function callback(e) {
+    var sourceBuffer = mediaSource.addSourceBuffer(codec);
+    ...
+    sourceBuffer.appendBuffer(new Uint8Array( chunk ));
+    ...
+    mediaSource.endOfStream();
+}, false)
+					</code></pre>
+					</section>
+
+					<section>
+						<h2>MediaSource - Támogatottság</h2>
+						<ul>
+							<li>Chrome <strong>23</strong> <br><code class="muted">chrome://flags/#disable-media-source</code></li>
+							<li>Firefox <strong>25</strong> <br><code class="muted">media.mediasource.enabled=true</code></li>
+							<li>Internet Explorer <strong>11</strong> <br><span  class="muted">Csak Window 8-on</span></li>
+							<li>Safari <strong>8</strong></li>
+						</ul>
+					</section>
+
+					<section>
+						<h2>MediaStream</h2>
+						<p>Kép és hang adatfolyamok</p>
+						<ul>
+							<li class="fragment">Helyi: <code>getUserMedia</code></li>
+							<li class="fragment">Távoli: <code>&lt;video&gt;</code>, <code>&lt;audio&gt;</code>, WebRTC</li>
+						</ul>
+					</section>
+
+					<section>
+						<h2>MediaStream - példa</h2>
+						<pre><code data-trim class="javascript">
+MediaStreamTrack.getSources(function(sourceInfo){
+   sourceInfo // [{id: '', kind: 'audio|video|...', label: ''}, ...]
+});
+
+var constraints = {
+   audio: { optional: [{sourceId: audioSource || ''}] },
+   video: { optional: [{sourceId: videoSource || ''}] }
+};
+
+navigator.getUserMedia(constraints function success(stream) {
+   videoElement.src = window.URL.createObjectURL(stream);
+   videoElement.play();
+}, errorCallback);
+					</code></pre>
+					</section>
+
+					<section>
+						<h2>MediaStrema - Demo</h2>
+						<iframe src="https://simpl.info/getusermedia/sources/" style="width: 640px; height:550px;"></iframe>
+					</section>
+
+
+					<section>
+						<h2>MediaStream és getUserMedia - Támogatottság</h2>
+						<ul>
+							<li>Chrome <strong>21</strong> <br><span class="muted"><code>webkit</code> prefix</span></li>
+							<li>Firefox <strong>18</strong> <br><span class="muted"><code>moz</code> prefix</span></li>
+							<li>Internet Explorer <strong>&dash;</strong></li>
+							<li>Safari <strong>&dash;</strong></li>
+						</ul>
+					</section>
+				</section>
+
+
+				<section>
+					<section>
+						<h2>EME</h2>
+						<h3>Encrypted Media Extensions</h3>
+
+						<ul>
+							<li class="fragment">A Media Element (opcionális) bővítmény</li>
+							<li class="fragment">Csak egy API <span class="muted">nincs benne a tartalom védelem, és a<abbr title="Digital Rights Management ">DRM</abbr>-et</span> </li>
+							<li class="fragment">A felhasználó azonosítást nem tartalmazza</li>
+						</ul>
+					</section>
+
+					<section>
+						<h2>Működés</h2>
+						<ol>
+							<li class="fragment">
+								Browser észleli a titkosított médiát <span class="muted">(metadata)</span>
+							</li>
+							<li class="fragment">
+								A <code>needkey</code> eseményre keresünk egy támogatott <abbr title="Content Decryption Modules">CDM-et</abbr> <br>
+								<code class="muted">MediaKeys.isTypeSupported(CDM, type)</code>
+							</li>
+							<li class="fragment">
+								Létrehozzuk a <code>MediaKey</code>-t <br>
+								<code class="muted">video.setMediaKeys(new MediaKeys('keySystem'))</code>
+							</li>
+							<li class="fragment">
+								Létrehozzunk egy <code>MediaKeySession</code>-t <br>
+								<code class="muted">keySession = video.mediaKeys.createSession(contentType, initData)</code>
+							</li>
+							<li class="fragment">
+								A session <code>message</code> event üzenetét továbbítjuk a <b>Lincese</b> servernek
+							</li>
+							<li class="fragment">
+								A válaszban kapott hitelesítés áatadjuk a session-nek <br>
+								<code class="muted">keySession.update(license)</code>
+							</li>
+						</ol>
+					</section>
+
+					<section>
+						<h2>Kapcsolódó technológiák</h2>
+
+						<ul>
+							<li>
+								<h3 class="fragment" style="margin-bottom: 0.2em">Media Source</h3>
+								<ul style="margin-bottom: 2em">
+									<li class="fragment">Feldarabolt média stream-elése</li>
+								</ul>
+							</li>
+							<li>
+								<h3 class="fragment" style="margin-bottom: 0.2em">Dynamic Adaptive Streaming over HTTP (DASH)</h3>
+								<ul style="margin-bottom: 2em">
+									<li class="fragment">Körülményektől függő videó bitrate</li>
+									<li class="fragment"><a href="http://www-itec.uni-klu.ac.at/dash/">DASH.js</a></li>
+								</ul>
+							</li>
+
+							<li>
+								<h3 class="fragment" style="margin-bottom: 0.2em">Media Presentation Description - .mpd fájl</h3>
+								<ul style="margin-bottom: 2em">
+									<li class="fragment">XML alapú</li>
+									<li class="fragment">Stream-elt, több felbontásos (esetleg titkosított) videófálok leírója</li>
+								</ul>
+							</li>
+						</ul>
+
+					</section>
+					<section>
+						<h2>MediaSource - Támogatottság</h2>
+						<ul>
+							<li>Chrome <strong>23</strong> <br>
+								<code class="muted">chrome://flags/#enable-encrypted-media</code><br>
+								<code class="muted">chrome://flags/#disable-prefixed-encrypted-media</code></li>
+							<li>Firefox <strong>25</strong></li>
+							<li>Internet Explorer <strong>11</strong></li>
+							<li>Safari <strong>8</strong></li>
+						</ul>
+					</section>
+				</section>
+
+
+<!-- The end -->
+				<section>
+					<h1 style="font-size:400%">?</h1>
+				</section>
+
+
+				<section>
+					<h1>Köszönjük a figyelmet</h1>
+				</section>
+
+				<!-- Links -->
+				<section>
+					<h2>Linkek</h2>
+					<ul>
+						<li><a href="http://vidzor.com"></a>Vidzor</li>
+						<li><a href="http://www.html5rocks.com/en/tutorials/video/basics/">HTML5rocks video basic</a></li>
+						<li><a href="http://www.w3.org/2010/05/video/mediaevents.html">Media events</a></li>
+						<li><a href="http://www.html5rocks.com/en/tutorials/track/basics/">HTML5rocks Track tutorial</a></li>
+						<li><a href="https://simpl.info/getusermedia/sources/">MediaStreamTrack példa</a></li>
+						<li><a href="http://www.html5rocks.com/en/tutorials/eme/basics/">HTML5rock - EME WTF </a></li>
+						<li><a href="http://www-itec.uni-klu.ac.at/dash/">DASH.js</a></li>
+					</ul>
+				</section>
+			</div>
+
+
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Parallax scrolling
+				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+				// parallaxBackgroundSize: '2100px 900px',
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; }},
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
