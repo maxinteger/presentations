@@ -155,19 +155,59 @@ document.querySelector('canvas')
 
 <!-- Problémák -->
 				<section>
-					<h1>A valóság</h1>
+                    <section>
+                        <h1>A valóság</h1>
+                        <ul>
+                            <li>Videó események</li>
+                            <li>Letöltés / Bufferelés</li>
+                            <li>Időzítés</li>
+                        </ul>
+                    </section>
 
-					<ul>
-						<li>Videó események</li>
-						<li>Letöltés / Bufferelés</li>
-						<li>Időzítés</li>
-					</ul>
+                    <section>
+                        <h1>Videó események</h1>
+                        <ul>
+                            <li>waiting / suspend / stalled</li>
+                            <li>különböző számú / hiányzó eventek</li>
+                            <li>hiányzó ended event loopolt videónál Chrome < 35 és IE alatt</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h1>Letöltés, buffering (1)</h1>
+                        <ul>
+                            <li>honnan tudjuk, hogy le tuduk játszani teljesen a videót</li>
+                            <li>canplaythrough, adaptív video streaming</li>
+                            <li>Chrome párhuzamos letöltési limit</li>
+                            <li>hiányzó ended event loopolt videónál Chrome < 35 és IE alatt</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h1>Letöltés, buffering (2)</h1>
+                        <ul>
+                            <li>IE9-ben nem működik a preload="none"</li>
+                            <li>IE9-ban a poster csak preload="none"--nál  és a preload="metadata"-nál
+                                van</li>
+                            <li>preload kikapcsolásánál a letöltött videó mennyisége változik ( Chrome
+                                és Firefox kb. 3MB, Safari 6, és IE9-nél 75MB (!) )</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h1>Lejátszás</h1>
+                        <ul>
+                            <li>IE < 10 nem támogatja a fullscreen módot</li>
+                            <li>időzítési problémák</li>
+                            <li>setTimeout vs requestAnimationFame vs </li>
+                        </ul>
+                    </section>
 				</section>
 
 
 <!-- Problémák -->
 				<section>
-					<h1>Mobil </h1>
+					<h1>Mobil</h1>
 
 					<ul>
 						<li>IOS</li>
