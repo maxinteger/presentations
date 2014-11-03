@@ -105,6 +105,22 @@ html{
 	line-height: 100%;
 }
 
+.reveal li {
+  margin-bottom: 0.5rem;
+}
+
+.reveal li li {
+  margin-bottom: 0.3rem;
+}
+.reveal li ul,
+.reveal li ol{
+  margin-top: 0.3rem;
+}
+
+.reveal .slide-background.present{
+  opacity: 0.1;
+}
+
 .reveal pre,
 .reveal .pre-like{
 	font-family: "Mono", monospace;

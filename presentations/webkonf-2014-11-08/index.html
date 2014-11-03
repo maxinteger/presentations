@@ -69,13 +69,13 @@
 
 				<section>
 
-					<h2>Tratalom</h2>
+					<h2>Tartalom</h2>
 
 					<ol>
-						<li>&lt;video&gt; alapok</li>
-						<li>&lt;video&gt; a való életben</li>
-						<li>Mobil videó</li>
-						<li>A jövő</li>
+						<li><code>&lt;video&gt;</code> - az elmélet</li>
+						<li>A valóság</li>
+						<li>Mobil platformok</li>
+						<li>Az elkövetkezendő jövő API-jai</li>
 					</ol>
 				</section>
 
@@ -115,7 +115,7 @@
 
 					<div class="fragment">
 						<h3 style="margin-top:1.3rem; margin-bottom:0.3rem">Szerver oldal:</h3>
-						<code>Accept Ranges: bytes</code> Header támogatása <span class="muted">(lásd seek!)</span>
+						<code>Accept Ranges: bytes</code> Header támogatása <br><span class="muted">(lásd még videó seek)</span>
 					</div>
 					</section>
 
@@ -140,7 +140,7 @@ video.load()
 					</section>
 
 					<section>
-						<h2 style="margin-bottom: .1em">Finomságok</h2>
+						<h2 style="margin-bottom: .1em">API +</h2>
 						<pre><code data-trim class="javascript">
 var video = document.querySelector('video'),
     w = video.videoWidth,
@@ -179,97 +179,93 @@ document.querySelector('canvas')
                     <section>
                         <h1>Videó események</h1>
                         <ul>
-                            <li>waiting / suspend / stalled</li>
-                            <li>különböző számú / hiányzó eventek</li>
-                            <li>hiányzó ended event loopolt videónál Chrome < 35 és IE alatt</li>
+                            <li class="fragment">waiting / suspend / stalled</li>
+                            <li class="fragment">Különböző számú / hiányzó eventek</li>
+                            <li class="fragment">Hiányzó <code>ended</code> event loopolt videónál Chrome &lt; 35 és IE alatt</li>
                         </ul>
                     </section>
 
                     <section>
-                        <h1>Letöltés, buffering (1)</h1>
+                        <h1>Letöltés, buffering</h1>
                         <ul>
-                            <li>honnan tudjuk, hogy le tuduk játszani teljesen a videót</li>
-                            <li>canplaythrough, adaptív video streaming</li>
-                            <li>Chrome párhuzamos letöltési limit</li>
-                            <li>hiányzó ended event loopolt videónál Chrome < 35 és IE alatt</li>
+                            <li class="fragment">Honnan tudjuk, hogy le tuduk játszani teljesen a videót</li>
+                            <li class="fragment">canplaythrough, adaptív video streaming</li>
+                            <li class="fragment">Chrome párhuzamos letöltési limit</li>
                         </ul>
                     </section>
 
                     <section>
-                        <h1>Letöltés, buffering (2)</h1>
+                        <h1>Letöltés, buffering 2</h1>
                         <ul>
-                            <li>IE9-ben nem működik a preload="none"</li>
-                            <li>IE9-ban a poster csak preload="none"--nál  és a preload="metadata"-nál
-                                van</li>
-                            <li>preload kikapcsolásánál a letöltött videó mennyisége változik ( Chrome
-                                és Firefox kb. 3MB, Safari 6, és IE9-nél 75MB (!) )</li>
+                            <li class="fragment">IE9-ben nem működik a <code>preload="none"</code></li>
+                            <li class="fragment">IE9-ban a poster csak <code>preload="none"</code>-nál  és a <code>preload="metadata"</code>-nál van</li>
+                            <li class="fragment">Preload kikapcsolásánál a letöltött videó mennyisége változik <br>
+                            <span class="muted">Chrome
+                                és Firefox kb. 3MB, Safari 6, és IE9-nél 75MB (!)</span></li>
                         </ul>
                     </section>
 
                     <section>
                         <h1>Lejátszás</h1>
                         <ul>
-                            <li>IE < 10 nem támogatja a fullscreen módot</li>
-                            <li>időzítési problémák</li>
-                            <li>setTimeout vs requestAnimationFame vs track</li>
+                            <li>IE &lt; 10 nem támogatja a fullscreen módot</li>
+                            <li>Időzítési problémák</li>
+                            <li><code>setTimeout</code> vs <code>requestAnimationFame</code> vs <code>track</code></li>
                         </ul>
                     </section>
 				</section>
 
 
-<!-- Problémák -->
+<!-- Mobil -->
 				<section>
                     <section>
-					    <h1>Mobil</h1>
+					    <h1>Mobil platformok</h1>
                         <ul>
                             <li>Feltételzhetően limitált adatforgalom - nincs preload</li>
-                            <li>az autoplay általában korlátozott</li>
+                            <li>Az autoplay általában korlátozott</li>
                         </ul>
                     </section>
 
                     <section>
-                        <h1>iOS (1)</h1>
+                        <h1>iOS</h1>
                         <ul>
-                            <li>iPhone-on a videólejátszás külön ablakban történik</li>
-                            <li>a videó töltéséne elindításához user interakció kell
+                            <li class="fragment">iPhone-on a videólejátszás külön ablakban történik</li>
+                            <li class="fragment">A videó töltéséne elindításához user interakció kell
                                 <ul>
-                                    <li>metaadatok se töltődnek be</li>
-                                    <li>mivel így a videó magassága és sélessége ismeretlen az iOS
+                                    <li>Metaadatok se töltődnek be</li>
+                                    <li>Mivel így a videó magassága és sélessége ismeretlen az iOS
                                     egy default 150x300 pixeles méretet állít be. Ez a videó
                                     betöltése után se módosul</li>
                                 </ul>
                             </li>
-                            <li>iOS8 alatt ha hiányzik az autoplay="false" attribútum, a videó
-                                egyáltalán nem töltődik be</li>
-                            <li>a hangerőt nem lehet JavaScriptből állítani
+                            <li class="fragment">iOS8 alatt ha hiányzik az <code>autoplay="false"</code> attribútum, <br>a videó egyáltalán nem töltődik be</li>
+                            <li class="fragment">A hangerőt nem lehet JavaScript-ből állítani
                                 <ul>
-                                    <li>csak a user állíthatja a fizikai gombbal</li>
-                                    <li>az aktuális hangerőt sem tudjuk megmondani</li>
-                                    <li>ha olvasni próbáljuk a volume property értéke mindig 1 lesz</li>
+                                    <li>Csak a user állíthatja a fizikai gombbal</li>
+                                    <li>Az aktuális hangerőt sem tudjuk megmondani</li>
+                                    <li>Ha olvasni próbáljuk a volume property értéke mindig 1 lesz</li>
                                 </ul>
                             </li>
                         </ul>
                     </section>
 
                     <section>
-                        <h1>iOS (2)</h1>
+                        <h1>iOS 2</h1>
                         <ul>
-                            <li>egy oldalon csak egy videó tölthető egyszerre
+                            <li class="fragment">
+                            	Egy oldalon csak egy videó tölthető egyszerre <br>
+                            	A videó forrásai azonban dinamikusan cserélhetőek
+                            </li>
+                            <li class="fragment">A videó lassítása/gyorsítása nem lehetséges
                                 <ul>
-                                    <li>a videó forrásai azonban dinamikusan cserélhetőek</li>
+                                    <li>A <code>playbackRate</code> property-t nem támogatja az iOS</li>
                                 </ul>
                             </li>
-                            <li>a videó lassítása/gyorsítása nem lehetséges
+                            <li class="fragment">QuickTime logo a videó töltése alatt
                                 <ul>
-                                    <li>a playbackRate property-t nem támogatja az iOS</li>
-                                </ul>
-                            </li>
-                            <li>QuickTime logo a videó töltése alatt
-                                <ul>
-                                    <li>nem érdekli a Z-index beállítás</li>
-                                    <li>visibility:hidden-nel vagydisplay: none-nal elrejtve a
-                                        videó töltése blokklódik</li>
-                                    <li>transition-okkel megoldható a logó látótéren kívülre való mozgatása</li>
+                                    <li>Nem érdekli a <code>z-index</code> beállítás</li>
+                                    <li><code>visibility:hidden</code>-nel vagy <code>display:none</code>-nal elrejtve a videó töltése blokklódik</li>
+                                    <li><code>transition</code>-okkel megoldható a logó látótéren kívülre való mozgatása</li>
                                 </ul>
                             </li>
                         </ul>
@@ -278,28 +274,31 @@ document.querySelector('canvas')
                     <section>
                         <h1>Android (4.x)</h1>
                         <ul>
-                            <li>Default böngészőben (nem Chrome-ban)
+                            <li class="fragment">Default böngészőben <span class="muted">nem Chrome-ban</span>
                                 <ul>
-                                    <li>a videó indításához a user interakciónak a videón kell történnie
-                                    Egyedi play-gombokkal a videó elindul, de azonnal megáll
+                                    <li>
+	                                    A videó indításához a user interakciónak a videón kell történnie <br>
+	                                    Egyedi play-gombokkal a videó elindul, de azonnal megáll
                                     </li>
-                                    <li>ha elindítunk egy videót egy tabban, majd elhagyjuk, nem
-                                        térhetünk vissza a videóhoz, frissítenünk kell az oldalt</li>
+                                    <li>
+                                    	Ha elindítunk egy videót egy tabban, majd elhagyjuk, nem
+                                        térhetünk vissza a videóhoz, frissítenünk kell az oldalt
+                                    </li>
                                 </ul>
                             </li>
-                            <li>Videózásra hazsnáljunk inkább Chrome-ot</li>
+                            <li class="fragment">Videózásra hazsnáljunk inkább Chrome-ot</li>
                         </ul>
                     </section>
 
                     <section>
                         <h1>Windows Phone</h1>
                         <ul>
-                            <li>WP7
+                            <li class="fragment">WP7
                                 <ul>
                                     <li>A videó megnyitása külön ablakban történik</li>
                                 </ul>
                             </li>
-                            <li>WP 8.1
+                            <li class="fragment">WP 8.1
                                 <ul>
                                     <li>A videók már a böngészőben is lejátszhatóak</li>
                                     <li>valódi streaming támogatás MPEG-DASH-el</li>
@@ -310,8 +309,8 @@ document.querySelector('canvas')
 				</section>
 
 <!-- Future -->
-				<section>
-					<h1>A jövő</h1>
+				<section data-background="assets/bttf.png" data-background-size="50rem">
+					<h1>Az elkövetkezendő jövő API-jai</h1>
 
 					<ul>
 						<li>&lt;track&gt;</li>
