@@ -48,7 +48,7 @@
 					<h1>Interaktív <code>&lt;video&gt;</code></h1>
 
 					<p>
-						<small><a href="">Ötvös Richárd</a> / <a href="">Vadász László</a></small>
+						<small><a href="mailto:o@vidzor.com">Ötvös Richárd</a> / <a href="mailto:lv@vidzor.com">Vadász László</a></small>
 					</p>
 
 				</section>
@@ -65,6 +65,18 @@
 							style="width: 640px; height:480px;">
 							<a href="http://vidzor.com">Vidzor - Interactive Videos</a>
 					</iframe>
+				</section>
+
+				<section>
+
+					<h2>Tratalom</h2>
+
+					<ol>
+						<li>&lt;video&gt; alapok</li>
+						<li>&lt;video&gt; a való életben</li>
+						<li>Mobil videó</li>
+						<li>A jövő</li>
+					</ol>
 				</section>
 
 <!-- VIDEO 101 -->
@@ -102,8 +114,8 @@
 					</code></pre>
 
 					<div class="fragment">
-						<h3>Szerver oldal:</h3>
-						<code>Accept Ranges: bytes</code> Header támogatása
+						<h3 style="margin-top:1.3rem; margin-bottom:0.3rem">Szerver oldal:</h3>
+						<code>Accept Ranges: bytes</code> Header támogatása <span class="muted">(lásd seek!)</span>
 					</div>
 					</section>
 
@@ -113,9 +125,9 @@
 						<pre><code data-trim class="javascript">
 var video = document.querySelector('video');
 
-video.duration       // s
-video.currentTime    // s
-video.buffered       // TimeRange - start(idx), end(idx), length
+video.duration       // sec
+video.currentTime    // sec
+video.buffered       // TimeRange: start(idx), end(idx), length
 video.play([time])
 video.pause()
 video.paused
@@ -131,16 +143,16 @@ video.load()
 						<h2 style="margin-bottom: .1em">Finomságok</h2>
 						<pre><code data-trim class="javascript">
 var video = document.querySelector('video'),
-	w = video.videoWidth,
-	h = video.videoHeight;
+    w = video.videoWidth,
+    h = video.videoHeight;
 
 // Teljes képernyős mód
 document.body.[moz|webkit|ms]RequestFullScreen()
 
 // Képlopás a videóból
 document.querySelector('canvas')
-   .getContext('2d')
-   .drawImage(video, 0, 0, w, h);
+    .getContext('2d')
+    .drawImage(video, 0, 0, w, h);
 							</code></pre>
 					</section>
 
@@ -232,19 +244,15 @@ document.querySelector('canvas')
 
 						<h2>&lt;track&gt;</h2>
 						<p>
-							A hang és kép adatt mellett elhelyezhető információs sáv(ok)
+							Időzített szöveges adatsáv
 						</p>
-					</section>
 
-					<section>
-						<h2>Mire jó?</h2>
-
-						<ul>
+						<ul style="margin-top:1rem">
 							<li class="fragment">Felirat</li>
 							<li class="fragment">Fejezetek megjelölése</li>
 							<li class="fragment">Keresési információk</li>
 							<li class="fragment">Metaadatok</li>
-							<li class="fragment"><code>&lt;audio&gt;</code> TAG-ban is használható</li>
+							<li class="fragment"><code>&lt;audio&gt;</code></li>
 						</ul>
 					</section>
 
@@ -267,11 +275,13 @@ document.querySelector('canvas')
 
 					<section>
 						<h2>WebVTT fájl</h2>
-
-						<p class="fragment">WebVTT azaz Web Video Text Track</p>
-						<p class="fragment">Kiterjesztés <code>.vtt</code> - <code>text/vtt</code> </p>
-						<p class="fragment">Időzített információkat tartalmaz (cue)</p>
-						<p class="fragment">A formátum naygrészt megegyezik a SubRip-el (srt)</p>
+						<ul>
+							<li class="fragment">Web Video Text Track</li>
+							<li class="fragment">Kiterjesztés: <code>.vtt</code></li>
+							<li class="fragment">MIME type: <code>text/vtt</code></li>
+							<li class="fragment">Időzített információkat tartalmaz (cue)</li>
+							<li class="fragment">Nagyrészt megegyezik a SubRip formátumal (.srt)</li>
+						</ul>
 
 					</section>
 					<section>
@@ -322,8 +332,8 @@ Harmadik pozícionálva
 						<h2>Track - API</h2>
 
 						<pre><code data-trim class="javascript">
-var videoElement = document.querySelector("video"),
-    textTracks = videoElement.textTracks,
+var video = document.querySelector("video"),
+    textTracks = video.textTracks,
     textTrack = textTracks[0],
     cues = textTrack.cues,
     cue = cues[0],
@@ -331,23 +341,24 @@ var videoElement = document.querySelector("video"),
     cueText = cue.text,
     data = JSON.parse(cueText);
 
-textTrack.oncuechange = function(){}
+textTrack.addEventListener('load', ... );
+textTrack.addEventListener('error', ... );
+
 						</code></pre>
 					</section>
 					<section>
 						<h2>Track - API 2</h2>
 
 						<pre><code data-trim class="javascript">
-var videoElement = document.querySelector("video"),
-    textTracks = videoElement.textTracks,
-    textTrack = textTracks[0],
-    cues = textTrack.cues,
-    cue = cues[0],
-    cueId = cue.id,
-    cueText = cue.text,
-    data = JSON.parse(cueText);
+var track = video.addTextTrack('metadata'),
+    cue = new TextTrackCue(0, video.duration, "text");
 
-textTrack.oncuechange = function(){}
+cue.addEventListener('enter', ...);
+cue.addEventListener('exit', ...)
+
+track.addCue(cue)
+
+textTrack.addEventListener('cuechange', ... );
 						</code></pre>
 					</section>
 
@@ -433,8 +444,8 @@ MediaStreamTrack.getSources(function(sourceInfo){
 });
 
 var constraints = {
-   audio: { optional: [{sourceId: audioSource || ''}] },
-   video: { optional: [{sourceId: videoSource || ''}] }
+   audio: { optional: [{sourceId: audioSource}] } || true,
+   video: { optional: [{sourceId: videoSource}] } || true
 };
 
 navigator.getUserMedia(constraints function success(stream) {
@@ -469,7 +480,7 @@ navigator.getUserMedia(constraints function success(stream) {
 
 						<ul>
 							<li class="fragment">A Media Element (opcionális) bővítmény</li>
-							<li class="fragment">Csak egy API <span class="muted">nincs benne a tartalom védelem, és a<abbr title="Digital Rights Management ">DRM</abbr>-et</span> </li>
+							<li class="fragment">Csak egy API <span class="muted">nincs benne a tartalom védelem, és a <abbr title="Digital Rights Management ">DRM</abbr></span> </li>
 							<li class="fragment">A felhasználó azonosítást nem tartalmazza</li>
 						</ul>
 					</section>
@@ -556,15 +567,49 @@ navigator.getUserMedia(constraints function success(stream) {
 
 				<!-- Links -->
 				<section>
-					<h2>Linkek</h2>
-					<ul>
-						<li><a href="http://vidzor.com"></a>Vidzor</li>
-						<li><a href="http://www.html5rocks.com/en/tutorials/video/basics/">HTML5rocks video basic</a></li>
-						<li><a href="http://www.w3.org/2010/05/video/mediaevents.html">Media events</a></li>
-						<li><a href="http://www.html5rocks.com/en/tutorials/track/basics/">HTML5rocks Track tutorial</a></li>
-						<li><a href="https://simpl.info/getusermedia/sources/">MediaStreamTrack példa</a></li>
-						<li><a href="http://www.html5rocks.com/en/tutorials/eme/basics/">HTML5rock - EME WTF </a></li>
-						<li><a href="http://www-itec.uni-klu.ac.at/dash/">DASH.js</a></li>
+					<ul style="list-style:none">
+						<li>
+							<p><a href="http://vidzor.com">Vidzor</a></p>
+						</li>
+						<li>
+							<h3 style="margin-top:0.8rem; margin-bottom:0.3rem">&lt;video&gt;</h3>
+							<ul>
+								<li><a href="http://www.html5rocks.com/en/tutorials/video/basics/">HTML5rocks - video basic</a></li>
+								<li><a href="http://www.w3.org/2010/05/video/mediaevents.html">Media events</a></li>
+							</ul>
+						</li>
+
+						<li>
+							<h3 style="margin-top:0.8rem; margin-bottom:0.3rem">&lt;track&gt;</h3>
+							<ul>
+								<li><a href="http://www.html5rocks.com/en/tutorials/track/basics/">HTML5rocks - Track tutorial</a></li>
+								<li><a href="https://simpl.info/getusermedia/sources/">MediaStreamTrack példa</a></li>
+							</ul>
+						</li>
+
+
+						<li>
+							<h3 style="margin-top:0.8rem; margin-bottom:0.3rem">Media API</h3>
+							<ul>
+								<li><a href="http://updates.html5rocks.com/2011/11/Stream-video-using-the-MediaSource-API">HTML5rocks - MediaSource API</a></li>
+								<li><a href="http://www.html5rocks.com/en/tutorials/getusermedia/intro/">HTML5rocks - Media Stream</a></li>
+							</ul>
+						</li>
+
+						<li>
+							<h3 style="margin-top:0.8rem; margin-bottom:0.3rem">Media titkosítás</h3>
+							<ul>
+								<li><a href="http://www.html5rocks.com/en/tutorials/eme/basics/">HTML5rock - EME WTF </a></li>
+								<li><a href="http://www-itec.uni-klu.ac.at/dash/">DASH.js</a></li>
+							</ul>
+						</li>
+
+						<li>
+							<h3 style="margin-top:0.8rem; margin-bottom:0.3rem">Példák</h3>
+							<ul>
+								<li><a href="https://simpl.info/">Simpl.info</a></li>
+							</ul>
+						</li>
 					</ul>
 				</section>
 			</div>
