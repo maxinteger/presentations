@@ -199,7 +199,7 @@ document.querySelector('canvas')
                         <ul>
                             <li>IE < 10 nem támogatja a fullscreen módot</li>
                             <li>időzítési problémák</li>
-                            <li>setTimeout vs requestAnimationFame vs </li>
+                            <li>setTimeout vs requestAnimationFame vs track</li>
                         </ul>
                     </section>
 				</section>
@@ -207,13 +207,94 @@ document.querySelector('canvas')
 
 <!-- Problémák -->
 				<section>
-					<h1>Mobil</h1>
+                    <section>
+					    <h1>Mobil</h1>
+                        <ul>
+                            <li>Feltételzhetően limitált adatforgalom - nincs preload</li>
+                            <li>az autoplay általában korlátozott</li>
+                        </ul>
+                    </section>
 
-					<ul>
-						<li>IOS</li>
-						<li>Android</li>
-						<li>WindowsPhone</li>
-					</ul>
+                    <section>
+                        <h1>iOS (1)</h1>
+                        <ul>
+                            <li>iPhone-on a videólejátszás külön ablakban történik</li>
+                            <li>a videó töltéséne elindításához user interakció kell
+                                <ul>
+                                    <li>metaadatok se töltődnek be</li>
+                                    <li>mivel így a videó magassága és sélessége ismeretlen az iOS
+                                    egy default 150x300 pixeles méretet állít be. Ez a videó
+                                    betöltése után se módosul</li>
+                                </ul>
+                            </li>
+                            <li>iOS8 alatt ha hiányzik az autoplay="false" attribútum, a videó
+                                egyáltalán nem töltődik be</li>
+                            <li>a hangerőt nem lehet JavaScriptből állítani
+                                <ul>
+                                    <li>csak a user állíthatja a fizikai gombbal</li>
+                                    <li>az aktuális hangerőt sem tudjuk megmondani</li>
+                                    <li>ha olvasni próbáljuk a volume property értéke mindig 1 lesz</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h1>iOS (2)</h1>
+                        <ul>
+                            <li>egy oldalon csak egy videó tölthető egyszerre
+                                <ul>
+                                    <li>a videó forrásai azonban dinamikusan cserélhetőek</li>
+                                </ul>
+                            </li>
+                            <li>a videó lassítása/gyorsítása nem lehetséges
+                                <ul>
+                                    <li>a playbackRate property-t nem támogatja az iOS</li>
+                                </ul>
+                            </li>
+                            <li>QuickTime logo a videó töltése alatt
+                                <ul>
+                                    <li>nem érdekli a Z-index beállítás</li>
+                                    <li>visibility:hidden-nel vagydisplay: none-nal elrejtve a
+                                        videó töltése blokklódik</li>
+                                    <li>transition-okkel megoldható a logó látótéren kívülre való mozgatása</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h1>Android (4.x)</h1>
+                        <ul>
+                            <li>Default böngészőben (nem Chrome-ban)
+                                <ul>
+                                    <li>a videó indításához a user interakciónak a videón kell történnie
+                                    Egyedi play-gombokkal a videó elindul, de azonnal megáll
+                                    </li>
+                                    <li>ha elindítunk egy videót egy tabban, majd elhagyjuk, nem
+                                        térhetünk vissza a videóhoz, frissítenünk kell az oldalt</li>
+                                </ul>
+                            </li>
+                            <li>Videózásra hazsnáljunk inkább Chrome-ot</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h1>Windows Phone</h1>
+                        <ul>
+                            <li>WP7
+                                <ul>
+                                    <li>A videó megnyitása külön ablakban történik</li>
+                                </ul>
+                            </li>
+                            <li>WP 8.1
+                                <ul>
+                                    <li>A videók már a böngészőben is lejátszhatóak</li>
+                                    <li>valódi streaming támogatás MPEG-DASH-el</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </section>
 				</section>
 
 <!-- Future -->
