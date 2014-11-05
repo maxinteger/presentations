@@ -89,7 +89,7 @@
 						<h2>&lt;video&gt; 101</h2>
 						<pre><code data-trim class="html">
 &lt;video src="video.mp4" width="320" height="200" controls muted&gt;
-   Sorry, your browser doesn't support embedded videos,
+   Upsz...
 &lt;/video&gt;
 					</code></pre>
 					</section>
@@ -183,7 +183,7 @@ document.querySelector('canvas')
                     <section>
                         <h1>Videó események</h1>
                         <ul>
-                            <li class="fragment">waiting / suspend / stalled</li>
+                            <li>waiting / suspend / stalled</li>
                             <li class="fragment">Különböző számú / hiányzó eventek</li>
                             <li class="fragment">Hiányzó <code>ended</code> event loopolt videónál Chrome &lt; 35 és IE alatt</li>
                         </ul>
@@ -192,8 +192,8 @@ document.querySelector('canvas')
                     <section>
                         <h1>Letöltés, buffering</h1>
                         <ul>
-                            <li class="fragment">Honnan tudjuk, hogy le tuduk játszani teljesen a videót</li>
-                            <li class="fragment">canplaythrough, adaptív video streaming</li>
+                            <li>Honnan tudjuk, hogy le tuduk játszani teljesen a videót?</li>
+                            <li class="fragment"><code>canplaythrough</code>, adaptív video streaming</li>
                             <li class="fragment">Chrome párhuzamos letöltési limit</li>
                         </ul>
                     </section>
@@ -201,8 +201,8 @@ document.querySelector('canvas')
                     <section>
                         <h1>Letöltés, buffering 2</h1>
                         <ul>
-                            <li class="fragment">IE9-ben nem működik a <code>preload="none"</code></li>
-                            <li class="fragment">IE9-ban a poster csak <code>preload="none"</code>-nál  és a <code>preload="metadata"</code>-nál van</li>
+                            <li>IE9-ben nem működik a <code>preload="none"</code></li>
+                            <li class="fragment">IE9-ban a poster csak <code>preload="none"</code>-nál<br> és a <code>preload="metadata"</code>-nál van</li>
                             <li class="fragment">Preload kikapcsolásánál a letöltött videó mennyisége változik <br>
                             <span class="muted">Chrome
                                 és Firefox kb. 3MB, Safari 6, és IE9-nél 75MB (!)</span></li>
@@ -213,8 +213,8 @@ document.querySelector('canvas')
                         <h1>Lejátszás</h1>
                         <ul>
                             <li>IE &lt; 10 nem támogatja a fullscreen módot</li>
-                            <li>Időzítési problémák</li>
-                            <li><code>setTimeout</code> vs <code>requestAnimationFame</code> vs <code>track</code></li>
+                            <li class="fragment">Időzítési problémák</li>
+                            <li class="fragment"><code>setTimeout</code> vs <code>requestAnimationFame</code> vs <code>track</code></li>
                         </ul>
                     </section>
 				</section>
@@ -223,35 +223,34 @@ document.querySelector('canvas')
 <!-- Mobil -->
 				<section>
 					<section data-background="assets/mobile.png" data-background-size="40rem">
-						<h1>Mobile</h1>
+						<h1>Mobil</h1>
 					</section>
 
                     <section>
 					    <h1>Mobil platformok</h1>
                         <ul>
                             <li>Feltételzhetően limitált adatforgalom - nincs preload</li>
-                            <li>Az autoplay általában korlátozott</li>
+                            <li class="fragment">Az autoplay általában korlátozott</li>
                         </ul>
                     </section>
 
                     <section>
                         <h1>iOS</h1>
                         <ul>
-                            <li class="fragment">iPhone-on a videólejátszás külön ablakban történik</li>
+                            <li>iPhone-on a videólejátszás külön ablakban történik</li>
                             <li class="fragment">A videó töltéséne elindításához user interakció kell
                                 <ul>
-                                    <li>Metaadatok se töltődnek be</li>
-                                    <li>Mivel így a videó magassága és sélessége ismeretlen az iOS
-                                    egy default 150x300 pixeles méretet állít be. Ez a videó
+                                    <li class="fragment">Metaadatok se töltődnek be</li>
+                                    <li class="fragment">Mivel így a videó magassága és sélessége ismeretlen az iOS<br>
+                                    egy default 150x300 pixeles méretet állít be. <br>Ez a videó
                                     betöltése után se módosul</li>
                                 </ul>
                             </li>
                             <li class="fragment">iOS8 alatt ha hiányzik az <code>autoplay="false"</code> attribútum, <br>a videó egyáltalán nem töltődik be</li>
                             <li class="fragment">A hangerőt nem lehet JavaScript-ből állítani
                                 <ul>
-                                    <li>Csak a user állíthatja a fizikai gombbal</li>
-                                    <li>Az aktuális hangerőt sem tudjuk megmondani</li>
-                                    <li>Ha olvasni próbáljuk a volume property értéke mindig 1 lesz</li>
+                                    <li>Csak a user állíthatja a fizikai gombokkal</li>
+                                    <li class="fragment">A <code>volume</code> property értéke mindig <code>1</code></li>
                                 </ul>
                             </li>
                         </ul>
@@ -260,39 +259,30 @@ document.querySelector('canvas')
                     <section>
                         <h1>iOS 2</h1>
                         <ul>
-                            <li class="fragment">
-                            	Egy oldalon csak egy videó tölthető egyszerre <br>
-                            	A videó forrásai azonban dinamikusan cserélhetőek
-                            </li>
-                            <li class="fragment">A videó lassítása/gyorsítása nem lehetséges
-                                <ul>
-                                    <li>A <code>playbackRate</code> property-t nem támogatja az iOS</li>
-                                </ul>
-                            </li>
+                            <li>Egy oldalon egyszerre csak egy videó tölthető be </li>
+                            <li class="fragment">A videó forrásai azonban dinamikusan cserélhetőek</li>
+                            <li class="fragment">A <code>playbackRate</code> property-t nem támogatja az iOS</li>
                             <li class="fragment">QuickTime logo a videó töltése alatt
                                 <ul>
                                     <li>Nem érdekli a <code>z-index</code> beállítás</li>
-                                    <li><code>visibility:hidden</code>-nel vagy <code>display:none</code>-nal elrejtve a videó töltése blokklódik</li>
-                                    <li><code>transition</code>-okkel megoldható a logó látótéren kívülre való mozgatása</li>
+                                    <li class="fragment">Ha elrejtjük (<code>visibility:hidden</code> vagy <code>display:none</code>), <br> a videó töltése megáll</li>
+                                    <li class="fragment"><code>transition</code>-okkel megoldható a logó<br> látótéren kívülre való mozgatásával</li>
                                 </ul>
                             </li>
                         </ul>
                     </section>
 
                     <section>
-                        <h1>Android (4.x)</h1>
+                        <h1>
+                        	Android (4.x)<br>
+							<small>(Default böngészőben)</small>
+                        </h1>
                         <ul>
-                            <li class="fragment">Default böngészőben <span class="muted">nem Chrome-ban</span>
-                                <ul>
-                                    <li>
-	                                    A videó indításához a user interakciónak a videón kell történnie <br>
-	                                    Egyedi play-gombokkal a videó elindul, de azonnal megáll
-                                    </li>
-                                    <li>
-                                    	Ha elindítunk egy videót egy tabban, majd elhagyjuk, nem
-                                        térhetünk vissza a videóhoz, frissítenünk kell az oldalt
-                                    </li>
-                                </ul>
+                            <li>A videó indításához a user interakciónak a videón kell történnie </li>
+                            <li class="fragment">Egyedi play-gombokkal a videó elindul, de azonnal megáll</li>
+                            <li class="fragment">
+                            	Ha elindítunk egy videót egy tabon, majd elhagyjuk,<br>
+                            	 nem térhetünk vissza a videóhoz, frissítenünk kell az oldalt
                             </li>
                             <li class="fragment">Videózásra hazsnáljunk inkább Chrome-ot</li>
                         </ul>
@@ -317,7 +307,7 @@ document.querySelector('canvas')
 				</section>
 
 <!-- Future -->
-				<section data-background="assets/bttf.png" data-background-size="50rem" data-background-id="bg-feature">
+				<section data-background="assets/bttf.png" data-background-size="40rem" data-background-id="bg-feature">
 					<h1>Az elkövetkezendő jövő API-jai</h1>
 
 					<ul>
@@ -364,10 +354,10 @@ document.querySelector('canvas')
 					<section>
 						<h2>WebVTT fájl</h2>
 						<ul>
-							<li class="fragment">Web Video Text Track</li>
+							<li>Web Video Text Track</li>
 							<li class="fragment">Kiterjesztés: <code>.vtt</code></li>
 							<li class="fragment">MIME type: <code>text/vtt</code></li>
-							<li class="fragment">Időzített információkat tartalmaz (cue)</li>
+							<li class="fragment">Időzített információkat tartalmaz <span class="muted">cue</span></li>
 							<li class="fragment">Nagyrészt megegyezik a SubRip formátumal (.srt)</li>
 						</ul>
 
@@ -379,7 +369,7 @@ document.querySelector('canvas')
 
 1
 00:00:22.230 --> 00:00:24.606
-Első felirat (cue)
+Felirat
 </div></pre>
 					</section>
 					<section>
@@ -388,7 +378,7 @@ Első felirat (cue)
 						<pre><div class="code">WEBVTT
 2
 00:00:34.159 --> 00:00:35.743 line:63% position:72% align:start
-Harmadik pozícionálva
+Pozícionálva
 </div></pre>
 					</section>
 					<section>
@@ -495,7 +485,7 @@ var codec = 'video/webm; codecs="vorbis,vp8"',
 
 video.src = window.URL.createObjectURL(mediaSource);
 
-mediaSource.addEventListener('sourceopen', function callback(e) {
+mediaSource.addEventListener('sourceopen', function callback(e){
     var sourceBuffer = mediaSource.addSourceBuffer(codec);
     ...
     sourceBuffer.appendBuffer(new Uint8Array( chunk ));
@@ -506,7 +496,7 @@ mediaSource.addEventListener('sourceopen', function callback(e) {
 					</section>
 
 					<section>
-						<h2>MediaSource - Támogatottság</h2>
+						<h2>Támogatottság<br><small>MediaSource</small></h2>
 						<ul>
 							<li>Chrome <strong>23</strong> <br><code class="muted">chrome://flags/#disable-media-source</code></li>
 							<li>Firefox <strong>25</strong> <br><code class="muted">media.mediasource.enabled=true</code></li>
@@ -518,17 +508,20 @@ mediaSource.addEventListener('sourceopen', function callback(e) {
 					<section>
 						<h2>MediaStream</h2>
 						<p>Kép és hang adatfolyamok</p>
+
+					<br>
 						<ul>
 							<li class="fragment">Helyi: <code>getUserMedia</code></li>
 							<li class="fragment">Távoli: <code>&lt;video&gt;</code>, <code>&lt;audio&gt;</code>, WebRTC</li>
 						</ul>
+
 					</section>
 
 					<section>
 						<h2>MediaStream - példa</h2>
 						<pre><code data-trim class="javascript">
 MediaStreamTrack.getSources(function(sourceInfo){
-   sourceInfo // [{id: '', kind: 'audio|video|...', label: ''}, ...]
+   sourceInfo // [{id:'', kind:'audio|video|..', label:''}, ..]
 });
 
 var constraints = {
@@ -550,7 +543,7 @@ navigator.getUserMedia(constraints function success(stream) {
 
 
 					<section>
-						<h2>MediaStream és getUserMedia - Támogatottság</h2>
+						<h2>Támogatottság<br><small>MediaStream és <code>getUserMedia()</code></small></h2>
 						<ul>
 							<li>Chrome <strong>21</strong> <br><span class="muted"><code>webkit</code> prefix</span></li>
 							<li>Firefox <strong>18</strong> <br><span class="muted"><code>moz</code> prefix</span></li>
@@ -567,9 +560,9 @@ navigator.getUserMedia(constraints function success(stream) {
 						<h3>Encrypted Media Extensions</h3>
 
 						<ul>
-							<li class="fragment">A Media Element (opcionális) bővítmény</li>
-							<li class="fragment">Csak egy API <span class="muted">nincs benne a tartalom védelem, és a <abbr title="Digital Rights Management ">DRM</abbr></span> </li>
-							<li class="fragment">A felhasználó azonosítást nem tartalmazza</li>
+							<li class="fragment">A Media Element (opcionális) bővítménye </li>
+							<li class="fragment">Csak egy API <span class="muted">nincs benne a tartalom védelem</span> </li>
+							<li class="fragment">Felhasználó azonosítást nem tartalmaz</li>
 						</ul>
 					</section>
 
@@ -580,7 +573,7 @@ navigator.getUserMedia(constraints function success(stream) {
 								Browser észleli a titkosított médiát <span class="muted">(metadata)</span>
 							</li>
 							<li class="fragment">
-								A <code>needkey</code> eseményre keresünk egy támogatott <abbr title="Content Decryption Modules">CDM-et</abbr> <br>
+								A <code>needkey</code> eseményre keresünk egy támogatott <abbr title="Content Decryption Module">CDM-et</abbr> <br>
 								<code class="muted">MediaKeys.isTypeSupported(CDM, type)</code>
 							</li>
 							<li class="fragment">
@@ -592,10 +585,10 @@ navigator.getUserMedia(constraints function success(stream) {
 								<code class="muted">keySession = video.mediaKeys.createSession(contentType, initData)</code>
 							</li>
 							<li class="fragment">
-								A session <code>message</code> event üzenetét továbbítjuk a <b>Lincese</b> servernek
+								A session <code>message</code> event üzenetét továbbítjuk a <b>License</b> szervernek
 							</li>
 							<li class="fragment">
-								A válaszban kapott hitelesítés áatadjuk a session-nek <br>
+								A válaszban kapott hitelesítés átadjuk a session-nek <br>
 								<code class="muted">keySession.update(license)</code>
 							</li>
 						</ol>
@@ -630,13 +623,13 @@ navigator.getUserMedia(constraints function success(stream) {
 
 					</section>
 					<section>
-						<h2>MediaSource - Támogatottság</h2>
+						<h2>Támogatottság <br><small>Encrypted Media Extensions</small> </h2>
 						<ul>
 							<li>Chrome <strong>23</strong> <br>
 								<code class="muted">chrome://flags/#enable-encrypted-media</code><br>
 								<code class="muted">chrome://flags/#disable-prefixed-encrypted-media</code></li>
 							<li>Firefox <strong>25</strong></li>
-							<li>Internet Explorer <strong>11</strong></li>
+							<li>Internet Explorer <strong>11</strong> <br><span  class="muted">Csak Window 8-on</span></li>
 							<li>Safari <strong>8</strong></li>
 						</ul>
 					</section>
@@ -644,7 +637,7 @@ navigator.getUserMedia(constraints function success(stream) {
 
 
 <!-- The end -->
-				<section data-background="assets/riddler.png" data-background-size="30rem" data-background-id="bg-riddler">
+				<section data-background="assets/riddler.png" data-background-size="25rem" data-background-id="bg-riddler">
 					<h1 style="font-size:400%"></h1>
 				</section>
 
@@ -658,9 +651,6 @@ navigator.getUserMedia(constraints function success(stream) {
 					<ul style="list-style:none">
 						<li>
 							<a href="http://vidzor.com">Vidzor</a>
-						</li>
-						<li>
-							<a href="http://maxinteger.github.io/presentations/presentations/webkonf-2014-11-08/index.html">Előadás</a>
 						</li>
 						<li>
 							<h3 style="margin-top:0.8rem; margin-bottom:0.3rem">&lt;video&gt;</h3>

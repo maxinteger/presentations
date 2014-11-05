@@ -71,6 +71,8 @@
  *********************************************/
 html{
 	font-size: 26px;
+  letter-spacing: 0.01rem;
+  word-spacing: 0.1rem;
 }
 
 .reveal img.logo{
@@ -83,7 +85,7 @@ html{
 }
 .reveal {
 	letter-spacing: -0.02rem;
-	line-height: 1.5rem;
+	line-height: 1.6rem;
 	font-family: "OpenSans";
 	font-weight: 100;
 }
@@ -139,7 +141,6 @@ html{
 	line-height: 1.1875rem;
 	box-shadow: none;
 	border-radius: 0.3rem;
-  width: 100%;
 }
 
 .reveal pre .code{
