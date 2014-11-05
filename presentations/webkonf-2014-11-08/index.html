@@ -42,10 +42,11 @@
 
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
-				<section>
-					<img class="logo" src="assets/p-dark-logo2.png" width="100" style="margin-bottom: 100px">
+				<section data-background="assets/vidzor.png" data-background-size="30rem" data-background-id="bg-vidzor">
 
-					<h1>Interaktív <code>&lt;video&gt;</code></h1>
+					<!--<img class="logo" src="assets/p-dark-logo2.png" width="100" style="margin-bottom: 100px">-->
+
+					<h1>Interaktív<br> <code>&lt;video&gt;</code></h1>
 
 					<p>
 						<small><a href="mailto:o@vidzor.com">Ötvös Richárd</a> / <a href="mailto:lv@vidzor.com">Vadász László</a></small>
@@ -72,7 +73,7 @@
 					<h2>Tartalom</h2>
 
 					<ol>
-						<li><code>&lt;video&gt;</code> - az elmélet</li>
+						<li><code>&lt;video&gt;</code> lépésről lépésre</li>
 						<li>A valóság</li>
 						<li>Mobil platformok</li>
 						<li>Az elkövetkezendő jövő API-jai</li>
@@ -81,6 +82,9 @@
 
 <!-- VIDEO 101 -->
 				<section>
+					<section data-background="assets/blender.png" data-background-size="40rem">
+						<h1><code>&lt;video&gt;</code> <br>lépésről lépésre</h1>
+					</section>
 					<section>
 						<h2>&lt;video&gt; 101</h2>
 						<pre><code data-trim class="html">
@@ -167,7 +171,7 @@ document.querySelector('canvas')
 
 <!-- Problémák -->
 				<section>
-                    <section>
+					<section data-background="assets/matrix.png" data-background-size="30rem">
                         <h1>A valóság</h1>
                         <ul>
                             <li>Videó események</li>
@@ -218,6 +222,10 @@ document.querySelector('canvas')
 
 <!-- Mobil -->
 				<section>
+					<section data-background="assets/mobile.png" data-background-size="40rem">
+						<h1>Mobile</h1>
+					</section>
+
                     <section>
 					    <h1>Mobil platformok</h1>
                         <ul>
@@ -309,7 +317,7 @@ document.querySelector('canvas')
 				</section>
 
 <!-- Future -->
-				<section data-background="assets/bttf.png" data-background-size="50rem">
+				<section data-background="assets/bttf.png" data-background-size="50rem" data-background-id="bg-feature">
 					<h1>Az elkövetkezendő jövő API-jai</h1>
 
 					<ul>
@@ -636,8 +644,8 @@ navigator.getUserMedia(constraints function success(stream) {
 
 
 <!-- The end -->
-				<section>
-					<h1 style="font-size:400%">?</h1>
+				<section data-background="assets/riddler.png" data-background-size="30rem" data-background-id="bg-riddler">
+					<h1 style="font-size:400%"></h1>
 				</section>
 
 
@@ -702,7 +710,7 @@ navigator.getUserMedia(constraints function success(stream) {
 		</div>
 
 		<script src="lib/js/head.min.js"></script>
-		<script src="js/reveal.min.js"></script>
+		<script src="js/reveal.js"></script>
 
 		<script>
 

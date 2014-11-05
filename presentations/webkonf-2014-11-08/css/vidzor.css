@@ -118,7 +118,17 @@ html{
 }
 
 .reveal .slide-background.present{
+  opacity: 0.4;
+}
+
+.reveal #bg-feature.slide-background.present{
   opacity: 0.1;
+}
+.reveal #bg-vidzor.slide-background.present{
+  opacity: 0.1;
+}
+.reveal #bg-riddler.slide-background.present{
+  opacity: 0.6;
 }
 
 .reveal pre,
