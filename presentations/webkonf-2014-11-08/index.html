@@ -138,6 +138,7 @@ video.pause()
 video.paused
 video.volume         // [0-1]
 video.muted
+video.readyState     // HAVE_NOTHING | HAVE_METADATA | HAVE_CURRENT_DATA | HAVE_FUTURE_DATA | HAVE_ENOUGH_DATA
 
 video.load()
 
@@ -220,7 +221,7 @@ document.querySelector('canvas')
                     </section>
 
                     <section>
-                        <h1>Letöltés, buffering 2</h1>
+                        <h1>Letöltés, buffering II</h1>
                         <ul>
                             <li>IE9-ben nem működik a <code>preload="none"</code></li>
                             <li class="fragment">IE9-ban a poster csak <code>preload="none"</code>-nál<br> és a <code>preload="metadata"</code>-nál van</li>
@@ -235,7 +236,7 @@ document.querySelector('canvas')
                         <ul>
                             <li>IE &lt; 10 nem támogatja a fullscreen módot</li>
                             <li class="fragment">Időzítési problémák</li>
-                            <li class="fragment"><code>setTimeout</code> vs <code>requestAnimationFame</code> vs <code>track</code></li>
+                            <li class="fragment"><code>timeupdate</code> event VS <code>setTimeout</code> VS <code>requestAnimationFrame</code> VS <code>&lt;track&gt;</code></li>
                         </ul>
                     </section>
 				</section>
@@ -259,11 +260,11 @@ document.querySelector('canvas')
                         <h1>iOS</h1>
                         <ul>
                             <li>iPhone-on a videólejátszás külön ablakban történik</li>
-                            <li class="fragment">A videó töltéséne elindításához user interakció kell
+                            <li class="fragment">A videó töltésének elindításához user interakció kell
                                 <ul>
                                     <li class="fragment">Metaadatok se töltődnek be</li>
                                     <li class="fragment">Mivel így a videó magassága és szélessége ismeretlen az iOS<br>
-                                    egy default 150x300 pixeles méretet állít be. <br>Ez a videó
+                                    egy default 300x150 pixeles méretet állít be. <br>Ez a videó
                                     betöltése után se módosul</li>
                                 </ul>
                             </li>
@@ -278,7 +279,7 @@ document.querySelector('canvas')
                     </section>
 
                     <section>
-                        <h1>iOS 2</h1>
+                        <h1>iOS II</h1>
                         <ul>
                             <li>Egy oldalon egyszerre csak egy videó tölthető be </li>
                             <li class="fragment">A videó forrásai azonban dinamikusan cserélhetőek</li>
@@ -393,7 +394,7 @@ Felirat
 </div></pre>
 					</section>
 					<section>
-						<h2>WebVTT 2 - pozícionálás</h2>
+						<h2>WebVTT II - pozícionálás</h2>
 
 						<pre><div class="code">WEBVTT
 2
@@ -402,7 +403,7 @@ Pozícionálva
 </div></pre>
 					</section>
 					<section>
-						<h2>WebVTT 3 - formázás</h2>
+						<h2>WebVTT III - formázás</h2>
 
 						<pre><div class="code">WEBVTT
 3
@@ -414,7 +415,7 @@ Pozícionálva
 </div></pre>
 					</section>
 					<section>
-						<h2>WebVTT 4 - adat</h2>
+						<h2>WebVTT IV - adat</h2>
 
 						<pre><div class="code">WEBVTT
 4
@@ -445,7 +446,7 @@ textTrack.addEventListener('error', ... );
 						</code></pre>
 					</section>
 					<section>
-						<h2>Track - API 2</h2>
+						<h2>Track - API II</h2>
 
 						<pre><code data-trim class="javascript">
 var track = video.addTextTrack('metadata'),
@@ -458,6 +459,7 @@ track.addCue(cue)
 
 textTrack.addEventListener('cuechange', ... );
 						</code></pre>
+						<a href="https://simpl.info/track/map/index.html" title="">Demo</a>
 					</section>
 
 
@@ -549,7 +551,7 @@ var constraints = {
    video: { optional: [{sourceId: videoSource}] } || true
 };
 
-navigator.getUserMedia(constraints function success(stream) {
+navigator.getUserMedia(constraints, function success(stream) {
    videoElement.src = window.URL.createObjectURL(stream);
    videoElement.play();
 }, errorCallback);
@@ -557,7 +559,7 @@ navigator.getUserMedia(constraints function success(stream) {
 					</section>
 
 					<section>
-						<h2>MediaStrema - Demo</h2>
+						<h2>MediaStream - Demo</h2>
 						<iframe src="https://simpl.info/getusermedia/sources/" style="width: 640px; height:550px;"></iframe>
 					</section>
 
