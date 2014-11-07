@@ -75,6 +75,10 @@ html{
   word-spacing: 0.1rem;
 }
 
+.reveal img.no-border{
+  border: none !important;
+}
+
 .reveal img.logo{
   border: none;
   background: none;

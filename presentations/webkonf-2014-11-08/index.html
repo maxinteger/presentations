@@ -104,6 +104,7 @@
    ...
 &lt;/video&gt;
 					</code></pre>
+
 					</section>
 
 					<section>
@@ -165,6 +166,26 @@ document.querySelector('canvas')
 						<a class="test" href="http://www.w3.org/2010/05/video/mediaevents.html">
 							<img width="800" src="assets/media-events.png" alt="Media events">
 						</a>
+					</section>
+
+					<section>
+						<h2>Támogatottság</h2>
+						<ul>
+							<li>Chrome <strong>3</strong></li>
+							<li>Firefox <strong>15</strong></li>
+							<li>Internet Explorer <strong>9</strong></li>
+							<li>Safari <strong>3</strong></li>
+						</ul>
+					</section>
+
+					<section>
+						<h2>Formátum támogatottság</h2>
+						<ul >
+							<li><span style="display:inline-block; width:6rem;">Chrome:</span> <code>WebM</code>, <code>OGV</code>, <code>MP4</code> <span class="muted">audio: ACC|MP3</span></li>
+							<li><span style="display:inline-block; width:6rem;">Firefox:</span> <code>WebM</code>, <code>OGV</code>, <code>MP4</code> <span class="muted">részlegesen</span></li>
+							<li><span style="display:inline-block; width:6rem;">Internet Explorer:</span> <code>MP4</code>, <code>WebM</code> <span class="muted">külön codekkel</span></li>
+							<li><span style="display:inline-block; width:6rem;">Safari:</span> <code>MP4</code> <span class="muted">audio: ACC</span>, <code>OGV</code> <span class="muted">külön codekkel</span> + QuickTime</li>
+						</ul>
 					</section>
 				</section>
 
@@ -241,7 +262,7 @@ document.querySelector('canvas')
                             <li class="fragment">A videó töltéséne elindításához user interakció kell
                                 <ul>
                                     <li class="fragment">Metaadatok se töltődnek be</li>
-                                    <li class="fragment">Mivel így a videó magassága és sélessége ismeretlen az iOS<br>
+                                    <li class="fragment">Mivel így a videó magassága és szélessége ismeretlen az iOS<br>
                                     egy default 150x300 pixeles méretet állít be. <br>Ez a videó
                                     betöltése után se módosul</li>
                                 </ul>
@@ -340,11 +361,10 @@ document.querySelector('canvas')
 						<pre><code data-trim class="html">
 &lt;video&gt;
    &lt;source ...&gt;
-   &lt;track kind="subtitle" src="subtitle-en.srt" srclang="en" default&gt;
-   &lt;track kind="subtitle" src="subtitle-hu.srt" srclang="hu"&gt;
-   &lt;track kind="captions" src="..."&gt;
-   &lt;track kind="descriptions" src="..."&gt;
+   &lt;track kind="subtitle" src="sub-en.srt" srclang="en" default&gt;
+   &lt;track kind="subtitle" src="sub-hu.srt" srclang="hu"&gt;
    &lt;track kind="chapters" src="..."&gt;
+   &lt;track kind="descriptions" src="..."&gt;
    &lt;track kind="metadata" src="meta.vtt" label="Location informations"&gt;
 &lt;/video&gt;
 						</code></pre>
@@ -644,6 +664,9 @@ navigator.getUserMedia(constraints function success(stream) {
 
 				<section>
 					<h1>Köszönjük a figyelmet</h1>
+					<a href="http://maxinteger.github.io/presentations/presentations/webkonf-2014-11-08/index.html#/">
+						<img class="no-border" src="http://api.qrserver.com/v1/create-qr-code/?color=171E24&amp;bgcolor=273b4f&amp;data=http%3A%2F%2Fmaxinteger.github.io%2Fpresentations%2Fpresentations%2Fwebkonf-2014-11-08%2Findex.html%23%2F&amp;qzone=1&amp;margin=0&amp;size=500x500&amp;ecc=L" alt="qr code" />
+					</a>
 				</section>
 
 				<!-- Links -->
