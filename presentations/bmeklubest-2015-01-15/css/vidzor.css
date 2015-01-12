@@ -1,0 +1,358 @@
+/**
+ * Vidzor theme for reveal.js.
+ */
+@font-face {
+  font-family: "Bariol";
+  src: url("./fonts/Bariol_Light.otf");
+  font-weight: 100;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Bariol";
+  src: url("./fonts/Bariol_Regular.otf");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "OpenSans";
+  src: url("./fonts/OpenSans-Light.ttf") format("truetype");
+  font-weight: 100;
+  font-style: normal;
+}
+
+
+@font-face {
+  font-family: "OpenSans";
+  src: url("./fonts/OpenSans-Regular.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+}
+
+
+@font-face {
+  font-family: "OpenSans";
+  src: url("./fonts/OpenSans-Bold.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Mono";
+  src: url("./fonts/InputMono-Regular.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+}
+
+
+/* Let's get this party started */
+::-webkit-scrollbar {
+    width: 7px;
+    height: 7px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: none;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: rgba(0,0,0,0.1);
+}
+::-webkit-scrollbar-thumb:window-inactive {
+  background: rgba(0,0,0,0.4);
+}
+
+/*********************************************
+ * GLOBAL STYLES
+ *********************************************/
+html{
+	font-size: 26px;
+  letter-spacing: 0.01rem;
+  word-spacing: 0.1rem;
+}
+
+ul.nostyle{
+  list-style: none;
+}
+
+.reveal img.no-border{
+  border: none !important;
+}
+
+.reveal img.logo{
+  border: none;
+  background: none;
+}
+.reveal iframe{
+  max-height: 100%;
+  max-width: 100%;
+}
+.reveal {
+	letter-spacing: -0.02rem;
+	line-height: 1.6rem;
+	font-family: "OpenSans";
+	font-weight: 100;
+}
+
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4,
+.reveal h5,
+.reveal h6 {
+  margin: 0 0 2.125rem 0;
+  font-family: "Bariol", sans-serif;
+  font-weight: 100;
+  letter-spacing: 0.02em;
+}
+
+.reveal h1 {
+	font-size: 2.375rem;
+	line-height: 100%;
+}
+
+.reveal li {
+  margin-bottom: 0.5rem;
+}
+
+.reveal li li {
+  margin-bottom: 0.3rem;
+}
+.reveal li ul,
+.reveal li ol{
+  margin-top: 0.3rem;
+}
+
+.reveal .slide-background.present{
+  opacity: 0.4;
+}
+
+.reveal #bg-feature.slide-background.present{
+  opacity: 0.2;
+}
+.reveal #bg-vidzor.slide-background.present{
+  opacity: 0.2;
+}
+.reveal #bg-riddler.slide-background.present{
+  opacity: 0.6;
+}
+
+.reveal pre,
+.reveal .pre-like{
+	font-family: "Mono", monospace;
+	padding: 2.5rem 1.5rem;
+	font-size: 0.875rem;
+	line-height: 1.1875rem;
+	box-shadow: none;
+	border-radius: 0.3rem;
+}
+
+.reveal pre .code{
+  padding: 5px;
+  overflow: auto;
+  max-height: 400px;
+  word-wrap: normal;
+}
+.reveal .pre-like * {
+  text-align: left;
+}
+
+.reveal .muted{
+	font-size: 0.75rem;
+	line-height: 1.125rem;
+}
+
+.reveal a:not(.image) {
+  text-decoration: none;
+  -webkit-transition: color .15s ease;
+  -moz-transition: color .15s ease;
+  -ms-transition: color .15s ease;
+  -o-transition: color .15s ease;
+  transition: color .15s ease;
+}
+
+.reveal a:not(.image):hover {
+  text-shadow: none;
+  border: none;
+}
+
+.reveal section img {
+  margin: 15px 0px;
+  border: 4px solid #eeeeee;
+  -webkit-transition: all .2s linear;
+  -moz-transition: all .2s linear;
+  -ms-transition: all .2s linear;
+  -o-transition: all .2s linear;
+  transition: all .2s linear;
+}
+
+.reveal a:hover img {
+  box-shadow: none;
+}
+
+.reveal .progress span {
+  -webkit-transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
+  -moz-transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
+  -ms-transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
+  -o-transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
+  transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
+}
+
+/*********************************************
+ * LINKS
+ *********************************************/
+.reveal a:not(.image) {
+  color: #e66d20;
+}
+
+.light .reveal a:not(.image):hover {
+  color: #71e9f4;
+}
+
+.light .reveal .roll span:after {
+  color: #fff;
+  background: #0d99a5;
+}
+
+/*********************************************
+ * IMAGES
+ *********************************************/
+.reveal section img {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: #eeeeee;
+}
+
+.reveal a:hover img {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: #e66d20;
+}
+
+/*********************************************
+ * NAVIGATION CONTROLS
+ *********************************************/
+.reveal .controls div.navigate-left,
+.reveal .controls div.navigate-left.enabled {
+  border-right-color: #e66d20;
+}
+
+.reveal .controls div.navigate-right,
+.reveal .controls div.navigate-right.enabled {
+  border-left-color: #e66d20;
+}
+
+.reveal .controls div.navigate-up,
+.reveal .controls div.navigate-up.enabled {
+  border-bottom-color: #e66d20;
+}
+
+.reveal .controls div.navigate-down,
+.reveal .controls div.navigate-down.enabled {
+  border-top-color: #e66d20;
+}
+
+.reveal .controls div.navigate-left.enabled:hover {
+  border-right-color: #7e3c12;
+}
+
+.reveal .controls div.navigate-right.enabled:hover {
+  border-left-color: #7e3c12;
+}
+
+.reveal .controls div.navigate-up.enabled:hover {
+  border-bottom-color: #7e3c12;
+}
+
+.reveal .controls div.navigate-down.enabled:hover {
+  border-top-color: #7e3c12;
+}
+
+/*********************************************
+ * PROGRESS BAR
+ *********************************************/
+.reveal .progress {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.reveal .progress span {
+  background: #e66d20;
+
+}
+
+/*********************************************
+ * SLIDE NUMBER
+ *********************************************/
+.reveal .slide-number {
+  color: #e66d20;
+}
+
+
+
+
+
+
+/*********************************************
+ * LIGHT
+ *********************************************/
+body.light {
+	background-color: #fff;
+}
+
+.light .reveal {
+	color: #171e24;
+}
+
+.light ::selection {
+  color: white;
+  background: #171e24;
+  text-shadow: none;
+}
+
+.light .reveal pre,
+.light .reveal pre code,
+.light .reveal .pre-like{
+	background-color: #e1e4e5;
+	color: #171e24;
+}
+
+
+
+
+/*********************************************
+ * DARK
+ *********************************************/
+body.dark {
+	background-color: #171e24;
+}
+
+.dark .reveal {
+	color: #edf0f1;
+}
+
+.dark ::selection {
+  color: white;
+  background: #171e24;
+  text-shadow: none;
+}
+
+.dark .reveal pre,
+.dark .reveal pre code,
+.dark .reveal .pre-like{
+	background-color: #273b4f;
+	color: #edf0f1;
+}
+
+.dark .reveal .muted{
+	color: #96a6a7;
+}
+
+.muted {
+  opacity: 0.7;
+  font-size: 0.7em;
+}
+.muted:hover{
+  opacity: 1;
+}
