@@ -75,6 +75,24 @@ html{
   word-spacing: 0.1rem;
 }
 
+.reveal .nostyle{
+  list-style: none;
+}
+
+.reveal .text-red{
+  color: #ff2c2d;
+}
+
+
+.reveal .text-green{
+  color: #17ff2e;
+}
+
+
+.reveal .text-blue{
+  color: #1b91ff;
+}
+
 .reveal img.no-border{
   border: none !important;
 }

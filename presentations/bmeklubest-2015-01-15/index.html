@@ -47,7 +47,7 @@
 					<!--<img class="logo" src="assets/p-dark-logo2.png" width="100" style="margin-bottom: 100px">-->
 					<h3 style="opacity: 0.5">Vidzor Studio Kft</h3>
 
-					<h1>Interaktív<br> <code>&lt;video&gt;</code></h1>
+					<h1>Több mint<br> <code>&lt;video&gt;</code></h1>
 
 					<p style="font-size: 0.8rem">
 						<a href="mailto:f@vidzor.com">Fekete György</a> / <a href="mailto:lv@vidzor.com">Vadász László</a>
@@ -63,21 +63,9 @@
 							mozallowfullscreen=""
 							webkitallowfullscreen=""
 							allowfullscreen=""
-							style="width: 640px; height:480px;">
+							style="width: 900px; height:550px;">
 							<a href="http://vidzor.com">Vidzor - Interactive Videos</a>
 					</iframe>
-				</section>
-
-				<section>
-
-					<h2>Tartalom</h2>
-
-					<ol>
-						<li>Történelem</li>
-						<li></li>
-						<li>Mobil platformok</li>
-						<li>Az elkövetkezendő jövő API-jai</li>
-					</ol>
 				</section>
 
 <!-- VIDEO 101 -->
@@ -87,43 +75,43 @@
 					</section>
 					<section>
 						<h2>Flash és Silverlight</h2>
+                        <ul class="nostyle">
+                            <li class="text-green">&plus; Egységes</li>
+                            <li class="fragment text-green">&plus; Video stream</li>
+                            <li class="fragment text-red">&minus; Plugin szükséges</li>
+                            <li class="fragment text-red">&minus; Zárt</li>
+                            <li class="fragment text-red">&minus; A HTML és Flash közötti kommunikáció nehézkes</li>
+                            <li class="fragment text-red">&minus; Gyártók támogatásának hiánya</li>
+                        </ul>
 						<pre><code data-trim class="html">
 &lt;object width="300" height="500"&gt;
-	&lt;param name="movie" value="http://www.yoursite.com/video.flv"&gt;
-	&lt;embed src="http://www.yoursite.com/video.flv" width="300" height="500"&gt;&lt;/embed&gt;
+   &lt;param name="movie" value="http://www.yoursite.com/video.flv"&gt;
+   &lt;embed src="http://www.yoursite.com/video.flv" width="300" height="500"&gt;&lt;/embed&gt;
 &lt;/object&gt;
 					</code></pre>
 
-                        <ul class="nostyle">
-                            <li>&plus; Egységes</li>
-                            <li>&plus; Video stream</li>
-                            <li class="fragment">&minus; Plugin szükséges</li>
-                            <li class="fragment">&minus; Zárt</li>
-                            <li class="fragment">&minus; A HTML és Flash közötti kommunikáció nehézkes</li>
-                            <li class="fragment">&minus; Gyártók támogatásának hiánya</li>
-                        </ul>
 
 					</section>
 
 
 					<section>
 						<h2>HTML5 video</h2>
+				       <ul class="nostyle">
+                            <li class="text-green">&plus; Szabványos</li>
+                            <li class="fragment text-green">&plus; Többféle formátum</li>
+                            <li class="fragment text-green">&plus; HTML API</li>
+                            <li class="fragment text-green">&plus; Mobil eszközökön is elérhető</li>
+                            <li class="fragment text-green">&plus; Folyamatos fejlesztés</li>
+                            <li class="fragment text-red">&minus; Video stream és titkosítás hiánya <b>*</b></li>
+                            <li class="fragment text-red">&minus; Implementációs eltérések</li>
+                        </ul>
 						<pre><code data-trim class="html">
 &lt;video preload="auto" poster="url"&gt;
    &lt;source src="/video.webm#t=10" type="video/webm; codecs='vp8, vorbis'"/&gt;
-   &lt;source src="/video.mp4#t=10" type="video/mp4; codecs='avc1.42C028, mp4a.40.2'"/&gt;
    ...
 &lt;/video&gt;
 						</code></pre>
-                        <ul class="nostyle">
-                            <li>&plus; Szabványos</li>
-                            <li class="fragment">&plus; Többféle formátum</li>
-                            <li class="fragment">&plus; HTML API</li>
-                            <li class="fragment">&plus; Mobil eszközökön is elérhető</li>
-                            <li class="fragment">&plus; Folyamatos fejlesztés</li>
-                            <li class="fragment">&minus; Video stream hiánya</li>
-                            <li class="fragment">&minus; Implementációs eltérések</li>
-                        </ul>
+
 
 					</section>
 
@@ -131,17 +119,18 @@
 						<h2>Böngésző és formátum támogatottság</h2>
 
 						<ul >
-							<li><span style="display:inline-block; width:9.5rem;">Chrome <strong>3+</strong>:</span>  <code>WebM</code>, <code>OGV</code>, <code>MP4</code> <span class="muted">audio: ACC|MP3</span></li>
+							<li><span style="display:inline-block; width:9.5rem;">Chrome <strong>3+</strong>:</span>  <code>WebM</code>, <code>OGV</code>, <code>MP4</code> <span class="muted">audio: AAC|MP3</span></li>
 							<li><span style="display:inline-block; width:9.5rem;">Firefox <strong>15+</strong>: </span> <code>WebM</code>, <code>OGV</code>, <code>MP4</code> <span class="muted">részlegesen</span></li>
 							<li><span style="display:inline-block; width:9.5rem;">Internet Explorer <strong>9+</strong>:</span> <code>MP4</code>, <code>WebM</code> <span class="muted">külön codekkel</span></li>
-							<li><span style="display:inline-block; width:9.5rem;">Safari <strong>3+</strong>:</span> <code>MP4</code> <span class="muted">audio: ACC</span>, <code>OGV</code> <span class="muted">külön codekkel</span> + QuickTime</li>
+							<li><span style="display:inline-block; width:9.5rem;">Safari <strong>3+</strong>:</span> <code>MP4</code> <span class="muted">audio: AAC</span>, <code>OGV</code> <span class="muted">külön codekkel</span> + QuickTime</li>
 						</ul>
 					</section>
 
 					<section>
 						<h2>Implemtációs eltérések problémája</h2>
+
 						<ul>
-							<li>Különböző számú / hiányzó eventek</li>
+							<li class="fragment">Különböző számú / hiányzó eventek</li>
 							<li class="fragment">Chrome párhuzamos letöltési limit</li>
                             <li class="fragment">IE9-ben nem működik a <code>preload="none"</code> (mobile adatformagolom!)</li>
                             <li class="fragment">IE &lt; 10 nem támogatja a fullscreen módot</li>
@@ -149,6 +138,8 @@
                             <li class="fragment"><code>timeupdate</code> event VS <code>setTimeout</code> VS <code>requestAnimationFrame</code> VS <code>&lt;track&gt;</code></li>
                             <li class="fragment">iPhone-on a videólejátszás külön ablakban történik</li>
 						</ul>
+
+						<p class="fragment" style="margin-top: 1em">Az egyszerű videólejátszás esetén ezek a hibák nem okoznak fennakadást</p>
 					</section>
 
 				</section>
@@ -164,7 +155,7 @@
 						<p> Időzített szöveges adatsáv </p>
 
 						<ul style="margin-top:1rem">
-							<li>Típusai:
+							<li class="fragment">Típusai:
 								<ul>
 									<li>Felirat</li>
 									<li>Fejezetek megjelölése</li>
@@ -173,7 +164,7 @@
 								</ul>
 							</li>
 
-							<li class="fragment">Betölthető fájlként (VTT fájl ~ Subrip)</li>
+							<li class="fragment">Betölthető fájlként (VTT fájl ~ SubRip)</li>
 							<li class="fragment">Dinaikusan is létrehozható (időzítés)</li>
 							<li class="fragment">Támogatottság
 								<ul>
@@ -210,7 +201,7 @@
 									<li>Videó (és audió) forrás manipulálása</li>
 									<li>Hangsáv váltás lejátszás közben</li>
 									<li>Bufferelés optimalizálása</li>
-									<li>Videó részeletek korlátozás (pl. login)</li>
+									<li>Videó részletek korlátozás (pl. login)</li>
 								</ul>
 							</li>
 							<li class="fragment">MediaStream
@@ -234,7 +225,7 @@
 
 					<section>
 						<h2>MediaStream &dash; példa</h2>
-						<iframe src="https://simpl.info/getusermedia/sources/" style="width: 640px; height:550px;"></iframe>
+						<iframe src="https://simpl.info/getusermedia/sources/" style="width: 900px; height:550px;"></iframe>
 					</section>
 
 
@@ -246,6 +237,7 @@
 							<li class="fragment">A Media Element (opcionális) bővítménye </li>
 							<li class="fragment">Csak egy API <span class="muted">nincs benne a tartalom védelem</span> </li>
 							<li class="fragment">Felhasználó azonosítást nem tartalmaz</li>
+							<li class="fragment">Netflix!</li>
 							<li class="fragment">Támogatás
 								<ul>
 									<li>Chrome <strong>23</strong> <span  class="muted">Alapből flag mögé rejtve</span></li>
@@ -288,28 +280,54 @@
 				</section>
 
 				<section>
-					<section data-background="../vidzor-common/assets/bttf.png" data-background-size="40rem" data-background-id="bg-feature">
-						<h1>A közeljövő</h1>
+					<section data-background="../vidzor-common/assets/mobile.png" data-background-size="40rem" data-background-id="bg-feature">
+						<h1>Jelen</h1>
 					</section>
 
+
 					<section>
-						<h2>Popcorn JS</h2>
+						<h2>Trendek - lehetőségek</h2>
+						<ul>
+							<li class="fragment">Rohamosan növekvő videó fogyasztás (~80-90%)</li>
+							<li class="fragment">Webes technológiák rohamos fejlődése</li>
+							<li class="fragment">Egyre jobb és egységesebb videó paltform (HTML5)</li>
+							<li class="fragment">Egyszerű videó készítés -> egyszerű szerkesztés?</li>
+							<li class="fragment">Videó mint reklámfelület</li>
+							<li class="fragment">Videó lejtászás lehetőségeink kibővítése</li>
+						</ul>
 					</section>
 
 					<section>
 						<h2>Video game</h2>
-						<iframe src="http://watch.vidzor.com/AVPEiSBhSE_?t=201412191722&autoplay=1" style="width: 640px; height:550px;"></iframe>
+						<iframe src="http://watch.vidzor.com/AVPEiSBhSE_?t=201412191722&autoplay=1" style="width: 900px; height:550px;"></iframe>
 					</section>
 
 					<section>
 						<h2>360° videó</h2>
-						<iframe src="http://www.kolor.com/360-video/autopano-video-360-video-stitcher.html" style="width: 640px; height:550px;"></iframe>
+						<iframe src="http://eyes.kolor.com/fr/i/846775716f45c58221bb265eeb74e4df" style="width: 900px; height:550px;"></iframe>
 					</section>
 
 					<section>
 						<h2>Paralell videó</h2>
-						<iframe src="https://www.hondatheotherside.com/?x=en-gb&x=hu" style="width: 640px; height:550px;"></iframe>
+						<iframe src="https://www.hondatheotherside.com/?x=en-gb&x=hu" style="width: 900px; height:550px;"></iframe>
 					</section>
+
+					<section>
+						<h2>WebGL</h2>
+						<iframe src="https://developer.mozilla.org/samples/webgl/sample8/index.html" style="width: 900px; height:550px;"></iframe>
+					</section>
+
+					<section>
+						<h2>További lehetőségek</h2>
+						<ul>
+							<li class="fragment">Mozgáskövetés</li>
+							<li class="fragment">Arcfelismerés</li>
+							<li class="fragment">Autómatikus fejezet keresés/felismerés</li>
+						</ul>
+						<a href="http://my.vidzor.com/#/">Vidzor editor</a>
+						<a href="https://popcorn.webmaker.org/">Popcorn maker</a>
+					</section>
+
 				</section>
 
 
@@ -321,8 +339,8 @@
 
 				<section>
 					<h1>Köszönjük a figyelmet</h1>
-					<a href="http://maxinteger.github.io/presentations/presentations/webkonf-2014-11-08/index.html#/">
-						<img class="no-border" src="http://api.qrserver.com/v1/create-qr-code/?color=171E24&amp;bgcolor=edf0f1&amp;data=http%3A%2F%2Fmaxinteger.github.io%2Fpresentations%2Fpresentations%2Fwebkonf-2014-11-08%2Findex.html%23%2F&amp;qzone=1&amp;margin=0&amp;size=400x400&amp;ecc=L" alt="qr code" />
+					<a href="http://maxinteger.github.io/presentations/presentations/bmeklubest-2015-01-15/index.html#/">
+						<img class="no-border" src="http://api.qrserver.com/v1/create-qr-code/?color=171E24&amp;bgcolor=edf0f1&amp;data=http%3A%2F%2Fmaxinteger.github.io%2Fpresentations%2Fpresentations%2Fbmeklubest-2015-01-15%2Findex.html%23%2F&amp;qzone=1&amp;margin=0&amp;size=400x400&amp;ecc=L" alt="qr code" />
 					</a>
 				</section>
 
@@ -332,43 +350,15 @@
 						<li>
 							<a href="http://vidzor.com">Vidzor</a>
 						</li>
-						<li>
-							<h3 style="margin-top:0.8rem; margin-bottom:0.3rem">&lt;video&gt;</h3>
-							<ul>
-								<li><a href="http://www.html5rocks.com/en/tutorials/video/basics/">HTML5rocks - video basic</a></li>
-								<li><a href="http://www.w3.org/2010/05/video/mediaevents.html">Media events</a></li>
-							</ul>
-						</li>
-
-						<li>
-							<h3 style="margin-top:0.8rem; margin-bottom:0.3rem">&lt;track&gt;</h3>
-							<ul>
-								<li><a href="http://www.html5rocks.com/en/tutorials/track/basics/">HTML5rocks - Track tutorial</a></li>
-								<li><a href="https://simpl.info/getusermedia/sources/">MediaStreamTrack példa</a></li>
-							</ul>
-						</li>
-
-
-						<li>
-							<h3 style="margin-top:0.8rem; margin-bottom:0.3rem">Media API</h3>
-							<ul>
-								<li><a href="http://updates.html5rocks.com/2011/11/Stream-video-using-the-MediaSource-API">HTML5rocks - MediaSource API</a></li>
-								<li><a href="http://www.html5rocks.com/en/tutorials/getusermedia/intro/">HTML5rocks - Media Stream</a></li>
-							</ul>
-						</li>
-
-						<li>
-							<h3 style="margin-top:0.8rem; margin-bottom:0.3rem">Media titkosítás</h3>
-							<ul>
-								<li><a href="http://www.html5rocks.com/en/tutorials/eme/basics/">HTML5rock - EME WTF </a></li>
-								<li><a href="http://www-itec.uni-klu.ac.at/dash/">DASH.js</a></li>
-							</ul>
-						</li>
+						<li><a href="http://maxinteger.github.io/presentations/presentations/webkonf-2014-11-08/index.html">Webkonf 2014 - interaktív &lt;video&gt;</a></li>
 
 						<li>
 							<h3 style="margin-top:0.8rem; margin-bottom:0.3rem">Példák</h3>
 							<ul>
-								<li><a href="https://simpl.info/">Simpl.info</a></li>
+								<li><a href="http://watch.vidzor.com/AVPEiSBhSE_?t=201412191722&autoplay=1">Vidzor - Icerage</a></li>
+								<li><a href="http://www.kolor.com/360-video/autopano-video-360-video-stitcher.html">Kolor - 360° video</a></li>
+								<li><a href="https://www.hondatheotherside.com/?x=en-gb&x=hu">Youtube - Paralell video</a></li>
+								<li><a href="https://simpl.info/">Simpl.info - technológiai példák</a></li>
 							</ul>
 						</li>
 					</ul>
