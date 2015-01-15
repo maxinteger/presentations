@@ -14,11 +14,11 @@
 
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<link rel="stylesheet" href="css/reveal.min.css">
-		<link rel="stylesheet" href="css/vidzor.css" id="theme">
+		<link rel="stylesheet" href="../vidzor-common/css/reveal.min.css">
+		<link rel="stylesheet" href="../vidzor-common/css/vidzor.css" id="theme">
 
 		<!-- For syntax highlighting -->
-		<link rel="stylesheet" href="lib/css/zenburn.css">
+		<link rel="stylesheet" href="../vidzor-common/lib/css/zenburn.css">
 
 		<!-- If the query includes 'print-pdf', include the PDF print sheet -->
 		<script>
@@ -42,7 +42,7 @@
 
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
-				<section data-background="assets/vidzor.png" data-background-size="30rem" data-background-id="bg-vidzor">
+				<section data-background="../vidzor-common/assets/vidzor.png" data-background-size="30rem" data-background-id="bg-vidzor">
 
 					<!--<img class="logo" src="assets/p-dark-logo2.png" width="100" style="margin-bottom: 100px">-->
 					<h3 style="opacity: 0.5">Vidzor Studio Kft</h3>
@@ -52,7 +52,6 @@
 					<p style="font-size: 0.8rem">
 						<a href="mailto:f@vidzor.com">Fekete György</a> / <a href="mailto:lv@vidzor.com">Vadász László</a>
 					</p>
-
 				</section>
 
 <!-- DEMO -->
@@ -74,8 +73,8 @@
 					<h2>Tartalom</h2>
 
 					<ol>
-						<li><code>&lt;video&gt;</code> lépésről lépésre</li>
-						<li>A valóság</li>
+						<li>Történelem</li>
+						<li></li>
 						<li>Mobil platformok</li>
 						<li>Az elkövetkezendő jövő API-jai</li>
 					</ol>
@@ -83,7 +82,7 @@
 
 <!-- VIDEO 101 -->
 				<section>
-					<section data-background="assets/blender.png" data-background-size="40rem">
+					<section data-background="../vidzor-common/assets/blender.png" data-background-size="40rem">
 						<h1>Egy kis történelem</h1>
 					</section>
 					<section>
@@ -115,7 +114,7 @@
    &lt;source src="/video.mp4#t=10" type="video/mp4; codecs='avc1.42C028, mp4a.40.2'"/&gt;
    ...
 &lt;/video&gt;
-					</code></pre>
+						</code></pre>
                         <ul class="nostyle">
                             <li>&plus; Szabványos</li>
                             <li class="fragment">&plus; Többféle formátum</li>
@@ -127,15 +126,6 @@
                         </ul>
 
 					</section>
-
-				</section>
-
-
-<!-- Problémák -->
-				<section>
-					<section data-background="assets/matrix.png" data-background-size="30rem">
-                        <h1>A jelen</h1>
-                    </section>
 
 					<section>
 						<h2>Böngésző és formátum támogatottság</h2>
@@ -149,26 +139,22 @@
 					</section>
 
 					<section>
-						<h2>Implemtációs eltérések probémája</h2>
+						<h2>Implemtációs eltérések problémája</h2>
 						<ul>
-							<li class="fragment">Különböző számú / hiányzó eventek</li>
+							<li>Különböző számú / hiányzó eventek</li>
 							<li class="fragment">Chrome párhuzamos letöltési limit</li>
-                            <li>IE9-ben nem működik a <code>preload="none"</code> (mobile adatformagolom!)</li>
-                            <li>IE &lt; 10 nem támogatja a fullscreen módot</li>
+                            <li class="fragment">IE9-ben nem működik a <code>preload="none"</code> (mobile adatformagolom!)</li>
+                            <li class="fragment">IE &lt; 10 nem támogatja a fullscreen módot</li>
                             <li class="fragment">Időzítési problémák</li>
                             <li class="fragment"><code>timeupdate</code> event VS <code>setTimeout</code> VS <code>requestAnimationFrame</code> VS <code>&lt;track&gt;</code></li>
-                            <li>iPhone-on a videólejátszás külön ablakban történik</li>
+                            <li class="fragment">iPhone-on a videólejátszás külön ablakban történik</li>
 						</ul>
 					</section>
 
-
-					<section>
-						<h2>Popcorn JS</h2>
-					</section>
 				</section>
 
 <!-- Future -->
-				<section data-background="assets/bttf.png" data-background-size="40rem" data-background-id="bg-feature">
+				<section data-background="../vidzor-common/assets/bttf.png" data-background-size="40rem" data-background-id="bg-feature">
 					<h1>A közeljövő</h1>
 				</section>
 
@@ -221,7 +207,7 @@
 						<ul>
 							<li>MediaSource
 								<ul>
-									<li>videó (és audió) forrás manipulálása</li>
+									<li>Videó (és audió) forrás manipulálása</li>
 									<li>Hangsáv váltás lejátszás közben</li>
 									<li>Bufferelés optimalizálása</li>
 									<li>Videó részeletek korlátozás (pl. login)</li>
@@ -243,14 +229,13 @@
 								</ul>
 							</li>
 						</ul>
-
 					</section>
+
 
 					<section>
 						<h2>MediaStream &dash; példa</h2>
 						<iframe src="https://simpl.info/getusermedia/sources/" style="width: 640px; height:550px;"></iframe>
 					</section>
-
 
 
 					<section>
@@ -263,11 +248,9 @@
 							<li class="fragment">Felhasználó azonosítást nem tartalmaz</li>
 							<li class="fragment">Támogatás
 								<ul>
-									<li>Chrome <strong>23</strong> <br>
-										<code class="muted">chrome://flags/#enable-encrypted-media</code><br>
-										<code class="muted">chrome://flags/#disable-prefixed-encrypted-media</code></li>
+									<li>Chrome <strong>23</strong> <span  class="muted">Alapből flag mögé rejtve</span></li>
 									<li>Firefox <strong>25</strong></li>
-									<li>Internet Explorer <strong>11</strong> <br><span  class="muted">Csak Window 8-on</span></li>
+									<li>Internet Explorer <strong>11</strong> <span  class="muted">Csak Window 8-on</span></li>
 									<li>Safari <strong>8</strong></li>
 								</ul>
 							</li>
@@ -278,34 +261,60 @@
 						<h2>Kapcsolódó technológiák</h2>
 
 						<ul>
-							<li>
-								<h3 class="fragment" style="margin-bottom: 0.2em">Media Source</h3>
+							<li  class="fragment">
+								<h3 style="margin-bottom: 0.2em">Media Source</h3>
 								<ul style="margin-bottom: 2em">
-									<li class="fragment">Feldarabolt média stream-elése</li>
+									<li>Feldarabolt média stream-elése</li>
 								</ul>
 							</li>
-							<li>
-								<h3 class="fragment" style="margin-bottom: 0.2em">Dynamic Adaptive Streaming over HTTP (DASH)</h3>
+							<li class="fragment">
+								<h3 style="margin-bottom: 0.2em">Dynamic Adaptive Streaming over HTTP (DASH)</h3>
 								<ul style="margin-bottom: 2em">
-									<li class="fragment">Körülményektől függő videó bitrate</li>
-									<li class="fragment"><a href="http://www-itec.uni-klu.ac.at/dash/">DASH.js</a></li>
+									<li>Körülményektől függő videó bitrate</li>
+									<li><a href="http://www-itec.uni-klu.ac.at/dash/">DASH.js</a></li>
 								</ul>
 							</li>
-
-							<li>
-								<h3 class="fragment" style="margin-bottom: 0.2em">Media Presentation Description - .mpd fájl</h3>
+							<li class="fragment">
+								<h3 style="margin-bottom: 0.2em">Media Presentation Description - .mpd fájl</h3>
 								<ul style="margin-bottom: 2em">
-									<li class="fragment">XML alapú</li>
-									<li class="fragment">Stream-elt, több felbontásos (esetleg titkosított) videófálok leírója</li>
+									<li>XML alapú</li>
+									<li>Stream-elt, több felbontásos (esetleg titkosított) videófálok leírója</li>
 								</ul>
 							</li>
 						</ul>
+					</section>
+
+
+				</section>
+
+				<section>
+					<section data-background="../vidzor-common/assets/bttf.png" data-background-size="40rem" data-background-id="bg-feature">
+						<h1>A közeljövő</h1>
+					</section>
+
+					<section>
+						<h2>Popcorn JS</h2>
+					</section>
+
+					<section>
+						<h2>Video game</h2>
+						<iframe src="http://watch.vidzor.com/AVPEiSBhSE_?t=201412191722&autoplay=1" style="width: 640px; height:550px;"></iframe>
+					</section>
+
+					<section>
+						<h2>360° videó</h2>
+						<iframe src="http://www.kolor.com/360-video/autopano-video-360-video-stitcher.html" style="width: 640px; height:550px;"></iframe>
+					</section>
+
+					<section>
+						<h2>Paralell videó</h2>
+						<iframe src="https://www.hondatheotherside.com/?x=en-gb&x=hu" style="width: 640px; height:550px;"></iframe>
 					</section>
 				</section>
 
 
 <!-- The end -->
-				<section data-background="assets/riddler.png" data-background-size="25rem" data-background-id="bg-riddler">
+				<section data-background="../vidzor-common/assets/riddler.png" data-background-size="25rem" data-background-id="bg-riddler">
 					<h1 style="font-size:400%"></h1>
 				</section>
 
@@ -370,8 +379,8 @@
 
 		</div>
 
-		<script src="lib/js/head.min.js"></script>
-		<script src="js/reveal.js"></script>
+		<script src="../vidzor-common/lib/js/head.min.js"></script>
+		<script src="../vidzor-common/js/reveal.js"></script>
 
 		<script>
 
@@ -392,12 +401,12 @@
 
 				// Optional libraries used to extend on reveal.js
 				dependencies: [
-					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; }},
-					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
-					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+					{ src: '../vidzor-common/lib/js/classList.js', condition: function() { return !document.body.classList; }},
+					{ src: '../vidzor-common/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../vidzor-common/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../vidzor-common/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: '../vidzor-common/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: '../vidzor-common/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
 				]
 			});
 
