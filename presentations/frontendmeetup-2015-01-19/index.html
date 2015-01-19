@@ -1,0 +1,324 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Vidzor - Interaktív &lt;video&gt;</title>
+
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Hakim El Hattab">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="../vidzor-common/css/reveal.min.css">
+		<link rel="stylesheet" href="../vidzor-common/css/vidzor.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="../vidzor-common/lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+		<script>
+			if( window.location.search.match( /print-pdf/gi ) ) {
+				var link = document.createElement( 'link' );
+				link.rel = 'stylesheet';
+				link.type = 'text/css';
+				link.href = 'css/print/pdf.css';
+				document.getElementsByTagName( 'head' )[0].appendChild( link );
+			}
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="../vidzor-common/lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body class="dark">
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section data-background="../vidzor-common/assets/vidzor.png" data-background-size="30rem" data-background-id="bg-vidzor">
+
+					<!--<img class="logo" src="../vidzor-common/assets/p-dark-logo2.png" width="100" style="margin-bottom: 100px">-->
+					<h3 style="opacity: 0.5">Vidzor Studio Kft</h3>
+
+					<h1><code>&lt;video&gt;</code></h1>
+
+					<p style="font-size: 0.8rem">
+						<a href="mailto:lv@vidzor.com">Vadász László</a>
+					</p>
+
+				</section>
+
+<!-- VIDEO 101 -->
+				<section>
+					<section>
+						<h2>Böngésző és formátum támogatottság</h2>
+
+						<ul >
+							<li><span style="display:inline-block; width:9.5rem;">Chrome <strong>3+</strong>:</span>  <code>WebM</code>, <code>OGV</code>, <code>MP4</code> <span class="muted">audio: AAC|MP3</span></li>
+							<li><span style="display:inline-block; width:9.5rem;">Firefox <strong>15+</strong>: </span> <code>WebM</code>, <code>OGV</code>, <code>MP4</code> <span class="muted">részlegesen</span></li>
+							<li><span style="display:inline-block; width:9.5rem;">Internet Explorer <strong>9+</strong>:</span> <code>MP4</code>, <code>WebM</code> <span class="muted">külön codekkel</span></li>
+							<li><span style="display:inline-block; width:9.5rem;">Safari <strong>3+</strong>:</span> <code>MP4</code> <span class="muted">audio: AAC</span>, <code>OGV</code> <span class="muted">külön codekkel</span> + QuickTime</li>
+						</ul>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>Codec felismerés</h2>
+						<pre style="padding: 1.5rem; font-size: 0.75rem; line-height: 1rem;"><code data-trim class="html">
+&lt;video width="320" height="200"&gt;
+   &lt;source src="/v.webm" type="video/webm"/&gt;
+   &lt;source src="/v.mp4" type="video/mp4'"/&gt;
+&lt;/video&gt;
+						</code></pre>
+
+						<h3 style="margin: 1rem">VS</h3>
+
+						<pre style="padding: 1.5rem; font-size: 0.75rem; line-height: 1rem;"><code data-trim class="html">
+&lt;video preload="auto" width="320" height="200"&gt;
+   &lt;source src="/v.webm" type="video/webm; codecs='vp8, vorbis'"/&gt;
+   &lt;source src="/v.mp4" type="video/mp4; codecs='avc1.42C028, mp4a.40.2'"/&gt;
+&lt;/video&gt;
+						</code></pre>
+
+						<p>Videó codec megállapítása: <a href="http://stackoverflow.com/questions/16363167/html5-video-tag-codecs-attribute">mp4file</a></p>
+
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>Poster</h2>
+						<p>
+							A beállított kép jelenik meg a videó lejátszása előtt (1. frame) és seek közben <br><span class="muted">(legalább is az MDN szerint)</span>
+						</p>
+
+						<pre><code data-trim  class="html">
+&lt;video src="video.mp4" poster="/poster.png"&gt; &lt;/video&gt;
+						</code></pre>
+
+						<ul>
+							<li class="fragment">IE9-ban a poster csak <code>preload="none"</code>-nál és a <code>preload="metadata"</code>-nál van</li>
+							<li class="fragment">IOS - QuickTime logo a videó töltése alatt
+	                            <ul>
+	                                <li>Nem érdekli a <code>z-index</code> beállítás</li>
+	                                <li class="fragment">Ha elrejtjük (<code>visibility:hidden</code> vagy <code>display:none</code>), <br> a videó töltése megáll</li>
+	                                <li class="fragment"><code>transition</code>-okkel megoldható a logó látótéren kívülre való mozgatásával</li>
+	                            </ul>
+	                        </li>
+						</ul>
+					</section>
+
+				</section>
+
+
+<!-- Problémák -->
+
+				<section>
+					<section>
+						<h2>&lt;track&gt;</h2>
+						<p> Időzített szöveges adatsáv </p>
+
+						<ul style="margin-top:1rem">
+							<li class="fragment">Típusai:
+								<ul>
+									<li>Felirat</li>
+									<li>Fejezetek megjelölése</li>
+									<li>Keresési információk</li>
+									<li>Metaadatok</li>
+									<li><code>&lt;audio&gt;</code></li>
+								</ul>
+							</li>
+							<li class="fragment">Támogatottság
+								<ul>
+									<li>Chrome <strong>23+</strong></li>
+									<li>Firefox <strong>31+</strong></li>
+									<li>Internet Explorer <strong>10+</strong></li>
+									<li>Safari <strong>6+</strong></li>
+								</ul>
+							</li>
+						</ul>
+					</section>
+
+					<section>
+						<h2>DOM</h2>
+
+						<pre><code data-trim class="html">
+&lt;video&gt;
+   &lt;source ...&gt;
+   &lt;track kind="subtitle" src="sub-en.srt" srclang="en" default&gt;
+   &lt;track kind="subtitle" src="sub-hu.srt" srclang="hu"&gt;
+   &lt;track kind="chapters" src="..."&gt;
+   &lt;track kind="descriptions" src="..."&gt;
+   &lt;track kind="metadata" src="meta.vtt" label="Location informations"&gt;
+&lt;/video&gt;
+						</code></pre>
+					</section>
+
+
+					<section>
+						<h2>WebVTT fájl</h2>
+						<ul>
+							<li>Web Video Text Track</li>
+							<li>Kiterjesztés: <code>.vtt</code></li>
+							<li>MIME type: <code>text/vtt</code></li>
+							<li>Időzített információkat tartalmaz <span class="muted">cue</span></li>
+							<li>Nagyrészt megegyezik a SubRip formátumal (.srt)</li>
+						</ul>
+
+					</section>
+					<section>
+						<h2>WebVTT 1 - időzítés</h2>
+
+						<pre><div class="code">WEBVTT
+
+1
+00:00:22.230 --> 00:00:24.606
+Felirat
+</div></pre>
+					</section>
+					<section>
+						<h2>WebVTT II - pozícionálás</h2>
+
+						<pre><div class="code">WEBVTT
+2
+00:00:34.159 --> 00:00:35.743 line:63% position:72% align:start
+Pozícionálva
+</div></pre>
+					</section>
+					<section>
+						<h2>WebVTT III - formázás</h2>
+
+						<pre><div class="code">WEBVTT
+3
+00:00:40.500 --> 00:00:41.500
+&lt;p&gt;
+   &lt;c.classname&gt;Negydik&lt;/c&gt; formázva &lt;i&gt;dőlt&lt;/i&gt; &lt;b&gt;félkövér&lt;/b&gt;
+&lt;/p&gt;
+
+</div></pre>
+					</section>
+					<section>
+						<h2>WebVTT IV - adat</h2>
+
+						<pre><div class="code">WEBVTT
+4
+00:00:60.500 --> 00:00:71.500
+{
+   "name": "Budapest"
+   "latitude": 47.497912
+   "longitude": 19.040235
+}</div></pre>
+					</section>
+
+					<section>
+						<h2>Track - API</h2>
+
+						<pre><code data-trim class="javascript">
+var video = document.querySelector("video"),
+    textTracks = video.textTracks,
+    textTrack = textTracks[0],
+    cues = textTrack.cues,
+    cue = cues[0],
+    cueId = cue.id,
+    cueText = cue.text,
+    data = JSON.parse(cueText);
+
+textTrack.addEventListener('load', ... );
+textTrack.addEventListener('error', ... );
+
+						</code></pre>
+					</section>
+					<section>
+						<h2>Track - API II</h2>
+
+						<pre><code data-trim class="javascript">
+var track = video.addTextTrack('metadata'),
+    cue = new TextTrackCue(0, video.duration, "text");
+
+cue.addEventListener('enter', ...);
+cue.addEventListener('exit', ...)
+
+track.addCue(cue)
+
+textTrack.addEventListener('cuechange', ... );
+						</code></pre>
+						<a href="https://simpl.info/track/map/index.html" title="">Demo</a>
+					</section>
+				</section>
+
+<!-- The end -->
+				<section data-background="../vidzor-common/assets/riddler.png" data-background-size="25rem" data-background-id="bg-riddler">
+					<h1>Köszönöm a figyelmet</h1>
+					<a href="http://maxinteger.github.io/presentations/presentations/frontendmeetup-2015-01-19/index.html#/">
+						<img class="no-border" src="http://api.qrserver.com/v1/create-qr-code/?color=171E24&amp;bgcolor=edf0f1&amp;data=http%3A%2F%2Fmaxinteger.github.io%2Fpresentations%2Fpresentations%2Ffrontendmeetup-2015-01-19%2Findex.html%23%2F&amp;qzone=1&amp;margin=0&amp;size=400x400&amp;ecc=L" alt="qr code" />
+					</a>
+				</section>
+
+				<!-- Links -->
+				<section>
+				<ul style="list-style:none">
+						<li><a href="http://vidzor.com">Vidzor</a></li>
+						<li><a href="http://maxinteger.github.io/presentations/presentations/webkonf-2014-11-08/index.html">Webkonf 2014 - interaktív &lt;video&gt;</a></li>
+						<li><a href="http://www.html5rocks.com/en/tutorials/track/basics/">HTML5rocks - Track tutorial</a></li>
+						<li><a href="https://simpl.info/track/map/index.html" title="">Track metadata Demo</a></li>
+						<li><a href="http://stackoverflow.com/questions/16363167/html5-video-tag-codecs-attribute">StackOverflow - video codec</a></li>
+					</ul>
+				</section>
+			</div>
+
+
+
+		</div>
+
+		<script src="../vidzor-common/lib/js/head.min.js"></script>
+		<script src="../vidzor-common/js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Parallax scrolling
+				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+				// parallaxBackgroundSize: '2100px 900px',
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: '../vidzor-common/lib/js/classList.js', condition: function() { return !document.body.classList; }},
+					{ src: '../vidzor-common/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../vidzor-common/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../vidzor-common/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: '../vidzor-common/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: '../vidzor-common/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+		<script>
+		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+		  ga('create', 'UA-58397188-1', 'auto');
+		  ga('send', 'pageview');
+
+		</script>
+	</body>
+</html>
